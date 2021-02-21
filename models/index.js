@@ -1,5 +1,4 @@
 module.exports = {
     User: require('./user'),
-    // question
-    // ?
+    RevObj: require('./revObj')
 }
