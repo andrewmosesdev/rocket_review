@@ -37,7 +37,7 @@ if (process.env.NODE_ENV === 'production') {
 
 
 mongoose
-    .connect(process.env.MONGODB_URI || 'mongodb://localhost/project3', {
+    .connect(process.env.MONGODB_URI || 'mongodb://localhost/rocket-review', {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
