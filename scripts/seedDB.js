@@ -47,5 +47,5 @@ let revObjSeed = [
    
 ];
 
-db.User.upsert(userSeed);
+db.User.findOneAndUpdate(userSeed);
 db.RevObj.create(revObjSeed);
