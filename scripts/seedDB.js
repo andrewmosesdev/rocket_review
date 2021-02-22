@@ -27,25 +27,8 @@ let revObjSeed = [
         topic: 'Topic 1',
         subtopic: 'Subtopic 1',
         difficulty: 'Week 1'
-    },
-    {
-        question: 'Question 2',
-        answer: 'Answer 2',
-        isFlagged: false,
-        topic: 'Topic 2',
-        subtopic: 'Subtopic 2',
-        difficulty: 'Week 2'
-    },
-    {
-        question: 'Question 3',
-        answer: 'Answer 3',
-        isFlagged: false,
-        topic: 'Topic 3',
-        subtopic: 'Subtopic 3',
-        difficulty: 'Week 3'
-    },
-   
+    }
 ];
 
 db.User.findOneAndUpdate(userSeed);
-db.RevObj.create(revObjSeed);
+db.RevObj.findOneAndUpdate(revObjSeed);
