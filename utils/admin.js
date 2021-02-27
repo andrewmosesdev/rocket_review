@@ -27,12 +27,18 @@ const adminBro = new AdminBro({
 module.exports = adminRouter = AdminBroExpress.buildAuthenticatedRouter(adminBro, {
     authenticate: async (email, password) => {
         const user = await User.findOne({ email });
-        const matched = bcrypt.compare(password, user.password);
-        if (user && matched && user.isAdmin === true) {
-            return user;
+        if (user) {
+            const matched = await bcrypt.compare(password, user.password);
+            if (matched) {
+                if (user.isAdmin === true) {
+                    return user;
+                }
+            } else {
+                return false
+            }
         }
         return false;
     },
-    
+
     cookiePassword: process.env.COOKIE_PASS,
 });
