@@ -24,21 +24,23 @@ const adminBro = new AdminBro({
 });
 
 
-module.exports = adminRouter = AdminBroExpress.buildAuthenticatedRouter(adminBro, {
-    authenticate: async (email, password) => {
-        const user = await User.findOne({ email });
-        if (user) {
-            const matched = await bcrypt.compare(password, user.password);
-            if (matched) {
-                if (user.isAdmin === true) {
-                    return user;
-                }
-            } else {
-                return false
-            }
-        }
-        return false;
-    },
+// module.exports = adminRouter = AdminBroExpress.buildAuthenticatedRouter(adminBro, {
+//     authenticate: async (email, password) => {
+//         const user = await User.findOne({ email });
+//         if (user) {
+//             const matched = await bcrypt.compare(password, user.password);
+//             if (matched) {
+//                 if (user.isAdmin === true) {
+//                     return user;
+//                 }
+//             } else {
+//                 return false
+//             }
+//         }
+//         return false;
+//     },
 
-    cookiePassword: process.env.COOKIE_PASS,
-});
+//     cookiePassword: process.env.COOKIE_PASS,
+// });
+
+module.exports = adminRouter = AdminBroExpress.buildRouter(adminBro)
