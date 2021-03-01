@@ -14,7 +14,7 @@ const app = express();
 if (process.env.NODE_ENV !== 'production') {
     app.use(morgan('dev'));
 }
-
+// app.use for adminbro location is important; must be before 20-28
 app.use('/admin', require('./utils/admin'));
 
 app.use(bodyParser.json());
