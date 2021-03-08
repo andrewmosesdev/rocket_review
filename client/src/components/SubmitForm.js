@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { SprkTextInput, SprkSelectionInput } from '@sparkdesignsystem/spark-react';
 
 const SubmitForm = (props) => {
     const { didSubmit } = props;
@@ -27,25 +28,107 @@ const SubmitForm = (props) => {
 
     return (
         <div>
-            <h2>Note Form</h2>
+            <h2>Question Submission Form</h2>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="title">Title:</label>
-                <input
-                    name='title'
-                    placeholder='title'
-                    type='text'
-                    value={title}
-                    onChange={event => setTitle(event.target.value)}
+                <label htmlFor="question">Question:</label>
+                <SprkTextInput
+                    label="question"
+                    name="question"
+                    type="textarea"
+                    value={question}
+                    onChange={event => setQuestion(event.target.value)} />
+                <br />
+                <label htmlFor="answer">Answer:</label>
+                <SprkTextInput
+                    label="answer"
+                    name="answer"
+                    type="textarea"
+                    value={answer}
+                    onChange={event => setAnswer(event.target.value)} />
+                <br />
+                <SprkSelectionInput
+                    choices={[
+                        {
+                            label: 'Week 1',
+                            value: 'week-1',
+                        },
+                        {
+                            label: 'Week 2',
+                            value: 'week-2',
+                        },
+                        {
+                            label: 'Week 3',
+                            value: 'week-3',
+                        },
+                        {
+                            label: 'Week 4',
+                            value: 'week-4'
+                        }
+                    ]}
+                    name="difficulty"
+                    variant="select"
+                    label="Difficulty"
                 />
                 <br />
-                <label htmlFor="body">Body:</label>
-                <textarea
-                    name='body'
-                    placeholder='body'
-                    value={body}
-                    onChange={event => setBody(event.target.value)}
+                <SprkSelectionInput
+                    choices={[
+                        {
+                            label: 'Option 1',
+                            value: 'option-1',
+                        },
+                        {
+                            label: 'Option 2',
+                            value: 'option-2',
+                        },
+                        {
+                            label: 'Option 3',
+                            value: 'option-3',
+                        },
+                    ]}
+                    name="name"
+                    variant="select"
+                    label="Select Box Label"
                 />
                 <br />
+                <SprkSelectionInput
+                    choices={[
+                        {
+                            label: 'Option 1',
+                            value: 'option-1',
+                        },
+                        {
+                            label: 'Option 2',
+                            value: 'option-2',
+                        },
+                        {
+                            label: 'Option 3',
+                            value: 'option-3',
+                        },
+                        {
+                            label: 'Grouped Options',
+                            options: [
+                                {
+                                    label: 'Grouped Option 1',
+                                    value: 'grouped-option-1',
+                                },
+                                {
+                                    label: 'Grouped Option 2',
+                                    value: 'grouped-option-2',
+                                },
+                                {
+                                    label: 'Grouped Option 3',
+                                    value: 'grouped-option-3',
+                                },
+                            ],
+                        },
+                    ]}
+                    name="name"
+                    variant="select"
+                    label="Select Box Label"
+                />
+                <br />
+
+
                 <button type='submit'>Save Note</button>
             </form>
         </div>
