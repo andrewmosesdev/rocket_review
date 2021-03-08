@@ -6,7 +6,7 @@ import axios from 'axios';
 import useAuth from './hooks/auth';
 import Home from './pages/Home';
 import Login from './pages/Login';
-import Notes from './pages/ReviewObjects';
+import ReviewObjects from './pages/ReviewObjects';
 
 
 function App() {
@@ -44,8 +44,8 @@ function App() {
                 <Route path='/login'>
                     <Login />
                 </Route>
-                <PrivateRoute exact path='/notes'>
-                    <Notes />
+                <PrivateRoute exact path='/review'>
+                    <ReviewObjects />
                 </PrivateRoute>
             </Switch>
         </Router>

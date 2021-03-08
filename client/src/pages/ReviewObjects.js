@@ -23,13 +23,13 @@ const ReviewObjects = function () {
         <div>
             <h2>Review Items</h2>
             <ol>
-                {revObjs.map(obj => {
+                {/* {revObjs.map(obj => {
                     return (
                         <li key={obj._id}>
                             <strong>{obj.question}</strong> {obj.answer} <sub>Flagged: {obj.isFlagged}</sub>
                         </li>
                     );
-                })}
+                })} */}
             </ol>
         </div>
     );
