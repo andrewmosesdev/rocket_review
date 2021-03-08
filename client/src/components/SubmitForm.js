@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { SprkTextInput, SprkSelectionInput } from '@sparkdesignsystem/spark-react';
+import API from '../utils/API';
 
 const SubmitForm = (props) => {
     const { didSubmit } = props;
@@ -25,6 +26,28 @@ const SubmitForm = (props) => {
         setFlaggedStatus('');
         didSubmit();
     };
+
+    // created empty arrays, push returns from fetch to those and map through for dropdown options?
+    let topicsArray = [];
+    let subTopicsArray = [];
+
+    useEffect(() => {
+        fetchTopics();
+        fetchSubTopics();
+
+    }, [refresh])
+
+    async function fetchTopics() {
+        const { topicData } = await API.getTopics();
+        setTopic(topicData);
+    }
+
+    async function fetchSubTopics() {
+        const { subTopicData } = await API.getSubTopics();
+        setSubTopic(subTopicData);
+    }
+
+    console.log(topicData, subTopicData)
 
     return (
         <div>
@@ -71,20 +94,7 @@ const SubmitForm = (props) => {
                 />
                 <br />
                 <SprkSelectionInput
-                    choices={[
-                        {
-                            label: 'Option 1',
-                            value: 'option-1',
-                        },
-                        {
-                            label: 'Option 2',
-                            value: 'option-2',
-                        },
-                        {
-                            label: 'Option 3',
-                            value: 'option-3',
-                        },
-                    ]}
+                    choices={}
                     name="name"
                     variant="select"
                     label="Select Box Label"
