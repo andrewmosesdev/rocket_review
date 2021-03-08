@@ -1,0 +1,27 @@
+import axios from 'axios';
+
+const API = {
+    // Gets all tasks
+    getRevObjs: function () {
+        return axios.get('/api/revObjs');
+    },
+    // Gets the task with the given id
+    getRevObj: function (id) {
+        return axios.get('/api/revObjs/' + id);
+    },
+    // Deletes the task with the given id
+    deleteRevObj: function (id) {
+        return axios.delete('/api/revObjs/' + id);
+    },
+    // Saves a task to the database
+    saveRevObj: function (revObjData) {
+        return axios.post('/api/revObjs', revObjData);
+    },
+    // Changes the task completion with the given id
+    changeFlagged: function (id, flaggedStatus) {
+        return axios.patch('/api/tasks/' + id, { isFlagged: flaggedStatus });
+    }
+};
+
+export default API;
+

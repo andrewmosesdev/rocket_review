@@ -9,13 +9,18 @@ const Login = () => {
     const location = useLocation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    // For our redirector
-    const [redirectToSignup, toggleRedirect] = useState(false);
+
     // This is the key part to our redirector. We can pull the prior location out here, if it exists
     const { from } = location.state || { from: { pathname: '/' } };
 
     const handleSubmit = event => {
         event.preventDefault();
+        console.log(event);
+        if (event.keydown === 13) {
+            login(email, password).then(res => {
+                history.replace(from);
+            });
+        }
         login(email, password).then(res => {
             history.replace(from);
         });
@@ -23,15 +28,6 @@ const Login = () => {
 
     if (isLoggedIn()) {
         return <Redirect to={location.state || '/'} />;
-    }
-
-    if (redirectToSignup) {
-        return <Redirect to={{
-            // If someone goes to signup, this transfers the redirect
-            pathname: '/signup',
-            state: { from: from }
-        }}
-        />;
     }
 
     return (
@@ -62,9 +58,6 @@ const Login = () => {
                 <br />
                 <button type='submit'>Login</button>
             </form>
-            <p>
-                Need an account? <button onClick={() => toggleRedirect(true)}>Signup Here</button>
-            </p>
 
         </div >
     );

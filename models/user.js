@@ -29,7 +29,10 @@ const userSchema = new Schema(
         isAdmin: {
             type: Boolean,
             default: true,
-        }
+        },
+        revObjs: [
+            { type: Schema.Types.ObjectId, ref: 'RevObj' }
+        ]
     }
 );
 

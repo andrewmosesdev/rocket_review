@@ -21,18 +21,6 @@ const useAuth = () => {
             });
     };
 
-    const signup = async (email, password) => {
-        return axios.post('api/auth/signup',
-            { email: email, password: password })
-            .then(res => {
-                setToken(res.data.token);
-                setUser(res.data.user);
-                // Stick the JWT in ALL requests in the Authorization header.
-                axios.defaults.headers.common.Authorization = `Bearer ${res.data.token}`;
-                return res;
-            });
-    };
-
     const logout = () => {
         // Clean out the header
         axios.defaults.headers.common.Authorization = null;
@@ -76,7 +64,6 @@ const useAuth = () => {
         user,
         getProfile,
         isLoggedIn,
-        signup,
         getToken
     };
 };
