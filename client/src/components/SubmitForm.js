@@ -1,19 +1,27 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-const NoteForm = (props) => {
+const SubmitForm = (props) => {
     const { didSubmit } = props;
-    const [title, setTitle] = useState('');
-    const [body, setBody] = useState('');
+    const [question, setQuestion] = useState('');
+    const [answer, setAnswer] = useState('');
+    const [difficulty, setDifficulty] = useState('');
+    const [topic, setTopic] = useState('');
+    const [subTopic, setSubTopic] = useState('');
+    const [flaggedStatus, setFlaggedStatus] = useState('');
 
     const handleSubmit = event => {
         event.preventDefault();
-        submitNote();
+        SubmitQuestion();
     };
-    const submitNote = async () => {
+    const SubmitQuestion = async () => {
         await axios.post('/api/notes', { title: title, body: body });
-        setBody('');
-        setTitle('');
+        setQuestion('');
+        setAnswer('');
+        setDifficulty('');
+        setTopic('');
+        setSubTopic('');
+        setFlaggedStatus('');
         didSubmit();
     };
 
@@ -44,4 +52,4 @@ const NoteForm = (props) => {
     );
 };
 
-export default NoteForm;
+export default SubmitForm;
