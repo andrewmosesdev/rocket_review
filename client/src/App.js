@@ -1,10 +1,10 @@
 import Navbar from './components/Navbar';
 import './App.css';
+import './App.scss'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import useAuth from './hooks/auth';
 import Home from './pages/Home';
-import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Notes from './pages/Notes';
 
@@ -37,9 +37,6 @@ function App() {
             <Switch>
                 <Route exact path='/'>
                     <Home />
-                </Route>
-                <Route path='/signup'>
-                    <Signup />
                 </Route>
                 <Route path='/login'>
                     <Login />
