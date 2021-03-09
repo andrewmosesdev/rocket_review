@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import API from '../utils/API';
+import SubmitForm from '../components/SubmitForm';
 
-const ReviewObjects = function () {
+const CreateReviewObjects = function () {
     const [revObjs, setRevObjs] = useState([]);
+
     // so we can refresh the Page *after* we get a response back from the server on our new note!
     const [refresh] = useState(0);
     // const refreshParent = () => {
@@ -29,6 +31,8 @@ const ReviewObjects = function () {
     return (
         <div>
             <h2>Review Items</h2>
+            <SubmitForm/>
+
             <ol>
                 {/* {revObjs.map(obj => {
                     return (
@@ -42,4 +46,4 @@ const ReviewObjects = function () {
     );
 };
 
-export default ReviewObjects;
+export default CreateReviewObjects;

@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { SprkTextInput, SprkSelectionInput } from '@sparkdesignsystem/spark-react';
 import API from '../utils/API';
 
 const SubmitForm = (props) => {
+    console.log(props)
     const { didSubmit } = props;
     const [question, setQuestion] = useState('');
     const [answer, setAnswer] = useState('');
@@ -17,37 +18,52 @@ const SubmitForm = (props) => {
         SubmitQuestion();
     };
     const SubmitQuestion = async () => {
-        await axios.post('/api/notes', { title: title, body: body });
+        await axios.post('/api/revObjs', { question: question, answer: answer, difficulty: difficulty, topic: topic, subTopic: subTopic, isFlagged: false });
         setQuestion('');
         setAnswer('');
         setDifficulty('');
         setTopic('');
         setSubTopic('');
         setFlaggedStatus('');
-        didSubmit();
+        // didSubmit();
     };
 
-    // created empty arrays, push returns from fetch to those and map through for dropdown options?
-    let topicsArray = [];
-    let subTopicsArray = [];
 
-    useEffect(() => {
-        fetchTopics();
-        fetchSubTopics();
-
-    }, [refresh])
+    let topicDataArr = [];
 
     async function fetchTopics() {
         const { topicData } = await API.getTopics();
         setTopic(topicData);
+
+        topicData.forEach(topicDatum => {
+            let topicDatumObject = {
+                label: topicDatum + " " + "label",
+                value: topicDatum
+            }
+            topicDataArr.push(topicDatumObject);
+        })
     }
+
+    let subTopicDataArr = [];
 
     async function fetchSubTopics() {
         const { subTopicData } = await API.getSubTopics();
         setSubTopic(subTopicData);
+
+        subTopicData.forEach(subTopicDatum => {
+            let subTopicDatumObject = {
+                label: subTopicDatum + " " + "label",
+                value: subTopicDatum
+            }
+            subTopicDataArr.push(subTopicDatumObject);
+        })
     }
 
-    console.log(topicData, subTopicData)
+    
+
+
+
+    
 
     return (
         <div>
@@ -91,55 +107,28 @@ const SubmitForm = (props) => {
                     name="difficulty"
                     variant="select"
                     label="Difficulty"
+                    onChange={event => setDifficulty(event.target.value)}
                 />
                 <br />
                 <SprkSelectionInput
-                    choices={}
+                    choices={topicDataArr}
                     name="name"
                     variant="select"
                     label="Select Box Label"
+                    onChange={event => setTopic(event.target.value)}
                 />
                 <br />
                 <SprkSelectionInput
-                    choices={[
-                        {
-                            label: 'Option 1',
-                            value: 'option-1',
-                        },
-                        {
-                            label: 'Option 2',
-                            value: 'option-2',
-                        },
-                        {
-                            label: 'Option 3',
-                            value: 'option-3',
-                        },
-                        {
-                            label: 'Grouped Options',
-                            options: [
-                                {
-                                    label: 'Grouped Option 1',
-                                    value: 'grouped-option-1',
-                                },
-                                {
-                                    label: 'Grouped Option 2',
-                                    value: 'grouped-option-2',
-                                },
-                                {
-                                    label: 'Grouped Option 3',
-                                    value: 'grouped-option-3',
-                                },
-                            ],
-                        },
-                    ]}
+                    choices={subTopicDataArr}
                     name="name"
                     variant="select"
                     label="Select Box Label"
+                    onChange={event => setSubTopic(event.target.value)}
                 />
                 <br />
 
 
-                <button type='submit'>Save Note</button>
+                <button type='submit'>Save Question</button>
             </form>
         </div>
     );
