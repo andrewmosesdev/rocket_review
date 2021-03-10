@@ -22,26 +22,15 @@ const CreateReviewObjects = function () {
         setRevObjs(data);
     }
 
-    const toggleRevObj = async (id, isFlagged) => {
-        const changedFlaggedStatus = !isFlagged;
-        await API.changeFlagged(id, changedFlaggedStatus);
-        fetchRevObjs();
-    }
+    // const toggleRevObj = async (id, isFlagged) => {
+    //     const changedFlaggedStatus = !isFlagged;
+    //     await API.changeFlagged(id, changedFlaggedStatus);
+    //     fetchRevObjs();
+    // }
 
     return (
         <div>
-            <h2>Review Items</h2>
-            <SubmitForm/>
-
-            <ol>
-                {/* {revObjs.map(obj => {
-                    return (
-                        <li key={obj._id}>
-                            <strong>{obj.question}</strong> {obj.answer} <sub>Flagged: {obj.isFlagged}</sub>
-                        </li>
-                    );
-                })} */}
-            </ol>
+            <SubmitForm />
         </div>
     );
 };

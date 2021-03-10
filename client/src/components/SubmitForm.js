@@ -4,66 +4,49 @@ import { SprkTextInput, SprkSelectionInput } from '@sparkdesignsystem/spark-reac
 import API from '../utils/API';
 
 const SubmitForm = (props) => {
-    console.log(props)
-    const { didSubmit } = props;
+
     const [question, setQuestion] = useState('');
     const [answer, setAnswer] = useState('');
     const [difficulty, setDifficulty] = useState('');
-    const [topic, setTopic] = useState('');
-    const [subTopic, setSubTopic] = useState('');
+    const [topic, setTopic] = useState([]);
+    const [subTopic, setSubTopic] = useState([]);
     const [flaggedStatus, setFlaggedStatus] = useState('');
 
     const handleSubmit = event => {
         event.preventDefault();
         SubmitQuestion();
+        fetchTopics();
+        fetchSubTopics();
     };
     const SubmitQuestion = async () => {
-        await axios.post('/api/revObjs', { question: question, answer: answer, difficulty: difficulty, topic: topic, subTopic: subTopic, isFlagged: false });
+        await axios.post('/api/revObjs', {
+            question: question, answer: answer, difficulty: difficulty
+            // , topic: topic, subTopic: subTopic, isFlagged: flaggedStatus 
+        });
         setQuestion('');
         setAnswer('');
         setDifficulty('');
-        setTopic('');
-        setSubTopic('');
-        setFlaggedStatus('');
-        // didSubmit();
+        // setTopic('');
+        // setSubTopic('');
+        // setFlaggedStatus('');
     };
 
 
-    let topicDataArr = [];
+    let topicDataArr = []
 
     async function fetchTopics() {
         const { topicData } = await API.getTopics();
         setTopic(topicData);
-
-        topicData.forEach(topicDatum => {
-            let topicDatumObject = {
-                label: topicDatum + " " + "label",
-                value: topicDatum
-            }
-            topicDataArr.push(topicDatumObject);
-        })
     }
+    // let convertedArray = []
+    // console.log(convertedArray)
 
     let subTopicDataArr = [];
 
     async function fetchSubTopics() {
         const { subTopicData } = await API.getSubTopics();
         setSubTopic(subTopicData);
-
-        subTopicData.forEach(subTopicDatum => {
-            let subTopicDatumObject = {
-                label: subTopicDatum + " " + "label",
-                value: subTopicDatum
-            }
-            subTopicDataArr.push(subTopicDatumObject);
-        })
     }
-
-    
-
-
-
-    
 
     return (
         <div>
@@ -71,7 +54,7 @@ const SubmitForm = (props) => {
             <form onSubmit={handleSubmit}>
                 <label htmlFor="question">Question:</label>
                 <SprkTextInput
-                    label="question"
+                    label=""
                     name="question"
                     type="textarea"
                     value={question}
@@ -79,12 +62,13 @@ const SubmitForm = (props) => {
                 <br />
                 <label htmlFor="answer">Answer:</label>
                 <SprkTextInput
-                    label="answer"
+                    label=""
                     name="answer"
                     type="textarea"
                     value={answer}
                     onChange={event => setAnswer(event.target.value)} />
                 <br />
+                <label htmlFor='difficulty'>Difficulty</label>
                 <SprkSelectionInput
                     choices={[
                         {
@@ -106,25 +90,29 @@ const SubmitForm = (props) => {
                     ]}
                     name="difficulty"
                     variant="select"
-                    label="Difficulty"
+                    label=""
+                    value={difficulty}
                     onChange={event => setDifficulty(event.target.value)}
                 />
                 <br />
-                <SprkSelectionInput
-                    choices={topicDataArr}
+                {/* <SprkSelectionInput
+                    choices={topicsRes}
                     name="name"
                     variant="select"
-                    label="Select Box Label"
+                    label="Topic"
+                    value={topic}
                     onChange={event => setTopic(event.target.value)}
-                />
+                /> */}
+
                 <br />
-                <SprkSelectionInput
+                {/* <SprkSelectionInput
                     choices={subTopicDataArr}
                     name="name"
                     variant="select"
-                    label="Select Box Label"
+                    label="Subtopic"
+                    value={subTopic}
                     onChange={event => setSubTopic(event.target.value)}
-                />
+                /> */}
                 <br />
 
 

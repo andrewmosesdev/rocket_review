@@ -17,9 +17,9 @@ const API = {
     saveRevObj: function (revObjData) {
         return axios.post('/api/revObjs', revObjData);
     },
-    // Changes the task completion with the given id
+    // Changes the flagged status with the given id
     changeFlagged: function (id, flaggedStatus) {
-        return axios.patch('/api/tasks/' + id, { isFlagged: flaggedStatus });
+        return axios.patch('/api/revObjs/' + id, { isFlagged: flaggedStatus });
     },
     getTopics: function () {
         return axios.get('/api/topics');

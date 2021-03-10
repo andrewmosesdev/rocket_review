@@ -20,14 +20,18 @@ const revObjSchema = new Schema(
             type: Boolean,
             default: false
         },
-        topic: {
+        topic:
+        {
             type: String,
             trim: true
-        },
-        subtopic: {
+        }
+        ,
+        subTopic:
+        {
             type: String,
             trim: true
-        },
+        }
+        ,
         difficulty: {
             type: String,
             trim: true
