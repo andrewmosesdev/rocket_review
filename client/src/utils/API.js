@@ -21,12 +21,12 @@ const API = {
     changeFlagged: function (id, flaggedStatus) {
         return axios.patch('/api/revObjs/' + id, { isFlagged: flaggedStatus });
     },
-    getTopics: function () {
-        return axios.get('/api/topics');
-    },
-    getSubTopics: function () {
-        return axios.get('/api/subTopics')
-    }
+    // getTopics: function () {
+    //     return axios.get('/api/topics');
+    // },
+    // getSubTopics: function () {
+    //     return axios.get('/api/subTopics')
+    // }
 };
 
 export default API;
