@@ -7,8 +7,9 @@ const Navbar = () => {
         <div>
             <h3>Navbar</h3>
             <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to='/create-review'>Create Review Items</Link></li>
+                {/* <li><Link to="/">Home</Link></li> */}
+                <li><Link to='/create-review'>Submit Question</Link></li>
+                <li><Link to='/review'>Review</Link></li>
                 {isLoggedIn() ?
                     <>
                         <li>Hello, {getProfile().email}</li>
@@ -21,6 +22,7 @@ const Navbar = () => {
                 }
                 
             </ul>
+            <br/>
         </div>
     );
 };

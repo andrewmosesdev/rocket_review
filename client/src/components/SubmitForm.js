@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { SprkTextInput, SprkSelectionInput } from '@sparkdesignsystem/spark-react';
-import API from '../utils/API';
 
 const SubmitForm = (props) => {
     const [question, setQuestion] = useState('');
@@ -9,18 +8,19 @@ const SubmitForm = (props) => {
     const [difficulty, setDifficulty] = useState('');
     const [topic, setTopic] = useState('');
     const [subTopic, setSubTopic] = useState('');
-    // const [flaggedStatus, setFlaggedStatus] = useState('');
 
     const handleSubmit = event => {
         event.preventDefault();
         SubmitQuestion();
-        // fetchTopics();
-        // fetchSubTopics();
     };
 
     const SubmitQuestion = async () => {
         await axios.post('/api/revObjs', {
-            question: question, answer: answer, difficulty: difficulty, topic: topic, subTopic: subTopic 
+            question: question, 
+            answer: answer, 
+            difficulty: difficulty, 
+            topic: topic, 
+            subTopic: subTopic 
         });
         setQuestion('');
         setAnswer('');
@@ -29,28 +29,11 @@ const SubmitForm = (props) => {
         setSubTopic('');
     };
 
-
-    // let topicDataArr = []
-
-    // async function fetchTopics() {
-    //     const { topicData } = await API.getTopics();
-    //     setTopic(topicData);
-    // }
-    // let convertedArray = []
-    // console.log(convertedArray)
-
-    // let subTopicDataArr = [];
-
-    // async function fetchSubTopics() {
-    //     const { subTopicData } = await API.getSubTopics();
-    //     setSubTopic(subTopicData);
-    // }
-
     return (
         <div>
-            <h2>Question Submission Form</h2>
+            <h2>Question Submission</h2>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="question">Question:</label>
+                <label htmlFor="question">Question</label>
                 <SprkTextInput
                     label=""
                     name="question"
@@ -58,7 +41,7 @@ const SubmitForm = (props) => {
                     value={question}
                     onChange={event => setQuestion(event.target.value)} />
                 <br />
-                <label htmlFor="answer">Answer:</label>
+                <label htmlFor="answer">Answer</label>
                 <SprkTextInput
                     label=""
                     name="answer"

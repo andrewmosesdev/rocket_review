@@ -11,7 +11,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
 
     // This is the key part to our redirector. We can pull the prior location out here, if it exists
-    const { from } = location.state || { from: { pathname: '/' } };
+    const { from } = { from: { pathname: '/review' } };
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -27,14 +27,15 @@ const Login = () => {
     };
 
     if (isLoggedIn()) {
-        return <Redirect to={location.state || '/'} />;
+        return <Redirect to={'/review'} />;
     }
 
     return (
         <div>
             <h2>
-                Login Page
+                Rocket Review
             </h2>
+            <br/>
             <form onSubmit={handleSubmit}>
                 <label htmlFor='email'>Email:</label>
                 <input

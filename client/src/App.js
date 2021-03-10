@@ -4,9 +4,10 @@ import './App.scss'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import useAuth from './hooks/auth';
-import Home from './pages/Home';
+// import Home from './pages/Home';
 import Login from './pages/Login';
 import CreateReviewObjects from './pages/CreateReviewObjects';
+import Review from './pages/Review';
 
 
 function App() {
@@ -39,13 +40,16 @@ function App() {
             <Navbar />
             <Switch>
                 <Route exact path='/'>
-                    <Home />
+                    <Login />
                 </Route>
                 <Route path='/login'>
                     <Login />
                 </Route>
                 <PrivateRoute exact path='/create-review'>
                     <CreateReviewObjects />
+                </PrivateRoute>
+                <PrivateRoute exact path='/review'>
+                    <Review />
                 </PrivateRoute>
             </Switch>
         </Router>
