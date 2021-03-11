@@ -22,12 +22,6 @@ const CreateReviewObjects = function () {
         setRevObjs(data);
     }
 
-    // const toggleRevObj = async (id, isFlagged) => {
-    //     const changedFlaggedStatus = !isFlagged;
-    //     await API.changeFlagged(id, changedFlaggedStatus);
-    //     fetchRevObjs();
-    // }
-
     return (
         <div>
             <SubmitForm />

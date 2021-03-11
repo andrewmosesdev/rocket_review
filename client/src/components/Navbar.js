@@ -7,22 +7,21 @@ const Navbar = () => {
         <div>
             <h3>Navbar</h3>
             <ul>
-                {/* <li><Link to="/">Home</Link></li> */}
-                <li><Link to='/create-review'>Submit Question</Link></li>
-                <li><Link to='/review'>Review</Link></li>
+
                 {isLoggedIn() ?
                     <>
+                        <li><Link to='/create-review'>Submit Question</Link></li>
+                        <li><Link to='/review'>Review</Link></li>
                         <li>Hello, {getProfile().email}</li>
                         <li><Link onClick={() => logout()} to='/'>Logout</Link></li>
                     </>
                     :
                     <>
-                        <li><Link to="/login">Login</Link></li>
                     </>
                 }
-                
+
             </ul>
-            <br/>
+            <br />
         </div>
     );
 };

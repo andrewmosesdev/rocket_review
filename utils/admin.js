@@ -4,8 +4,6 @@ const AdminBroMongoose = require('@admin-bro/mongoose');
 const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 const RevObj = require('../models/revObj');
-const Topic = require('../models/topic');
-const SubTopic = require('../models/subTopic');
 AdminBro.registerAdapter(AdminBroMongoose);
 const adminBro = new AdminBro({
     rootPath: '/admin',
@@ -21,19 +19,7 @@ const adminBro = new AdminBro({
             options: {
                 // config
             }
-        },
-        // {
-        //     resource: Topic,
-        //     options: {
-        //         // config
-        //     }
-        // },
-        // {
-        //     resource: SubTopic,
-        //     options: {
-        //         // config
-        //     }
-        // }
+        }
     ],
 });
 

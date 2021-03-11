@@ -1,3 +1,5 @@
+import ResultGrid from "../components/ResultGrid";
+
 function Review() {
 
     return (
@@ -5,6 +7,8 @@ function Review() {
             <h2>
                 Review Page
             </h2>
+            <br/>
+            <ResultGrid/>
         </div>
     );
 }
