@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { SprkTextInput, SprkSelectionInput } from '@sparkdesignsystem/spark-react';
+import { SprkTextInput, SprkSelectionInput, SprkAlert } from '@sparkdesignsystem/spark-react';
 
 const SubmitForm = (props) => {
     const [question, setQuestion] = useState('');
@@ -8,6 +8,12 @@ const SubmitForm = (props) => {
     const [difficulty, setDifficulty] = useState('');
     const [topic, setTopic] = useState('');
     const [subTopic, setSubTopic] = useState('');
+    
+    // for alert
+    const [open, setOpen] = useState(false);
+    const handleClick = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
 
     console.log(question, answer, difficulty, topic, subTopic)
 
@@ -18,24 +24,26 @@ const SubmitForm = (props) => {
 
     const SubmitQuestion = async () => {
 
-        if(!question || !answer || !difficulty || !topic || !subTopic){
-            console.log('pls work')
-        } else{
+        if (!question || !answer || !difficulty || !topic || !subTopic) {
+            handleClick()
+        } else {
             await axios.post('/api/revObjs', {
-                question: question, 
-                answer: answer, 
-                difficulty: difficulty, 
-                topic: topic, 
-                subTopic: subTopic 
+                question: question,
+                answer: answer,
+                difficulty: difficulty,
+                topic: topic,
+                subTopic: subTopic
             });
             setQuestion('');
             setAnswer('');
             setDifficulty('');
             setTopic('');
             setSubTopic('');
+            handleClose()
         }
-
         
+        
+
     };
 
     return (
@@ -135,7 +143,7 @@ const SubmitForm = (props) => {
                             label: 'Click to select a subtopic'
                         },
                         {
-                            value: "Histroy",
+                            value: "History",
                             label: "History"
                         },
                         {
@@ -249,10 +257,19 @@ const SubmitForm = (props) => {
                     value={subTopic}
                     onChange={event => setSubTopic(event.target.value)}
                 />
-                <br />
-
-
+                
+                <br/>
                 <button type='submit'>Save Question</button>
+                <br />
+                <SprkAlert
+                    role='alert'
+                    message="Please fill out all fields before submitting"
+                    variant="fail"
+                    isVisible={open}
+                    idString="alert-fail"
+                    analyticsString="alert-fail-analytics"
+                    iconNameFail='exclamation-filled'
+                />
             </form>
         </div>
     );
