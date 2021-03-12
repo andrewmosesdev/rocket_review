@@ -9,24 +9,33 @@ const SubmitForm = (props) => {
     const [topic, setTopic] = useState('');
     const [subTopic, setSubTopic] = useState('');
 
+    console.log(question, answer, difficulty, topic, subTopic)
+
     const handleSubmit = event => {
         event.preventDefault();
         SubmitQuestion();
     };
 
     const SubmitQuestion = async () => {
-        await axios.post('/api/revObjs', {
-            question: question, 
-            answer: answer, 
-            difficulty: difficulty, 
-            topic: topic, 
-            subTopic: subTopic 
-        });
-        setQuestion('');
-        setAnswer('');
-        setDifficulty('');
-        setTopic('');
-        setSubTopic('');
+
+        if(!question || !answer || !difficulty || !topic || !subTopic){
+            console.log('pls work')
+        } else{
+            await axios.post('/api/revObjs', {
+                question: question, 
+                answer: answer, 
+                difficulty: difficulty, 
+                topic: topic, 
+                subTopic: subTopic 
+            });
+            setQuestion('');
+            setAnswer('');
+            setDifficulty('');
+            setTopic('');
+            setSubTopic('');
+        }
+
+        
     };
 
     return (
@@ -39,6 +48,7 @@ const SubmitForm = (props) => {
                     name="question"
                     type="textarea"
                     value={question}
+                    formatter={value => value == !null}
                     onChange={event => setQuestion(event.target.value)} />
                 <br />
                 <label htmlFor="answer">Answer</label>
@@ -53,20 +63,24 @@ const SubmitForm = (props) => {
                 <SprkSelectionInput
                     choices={[
                         {
+                            label: 'Click to select a difficulty',
+                            value: null
+                        },
+                        {
                             label: 'Week 1',
-                            value: 'week-1',
+                            value: 'Week 1',
                         },
                         {
                             label: 'Week 2',
-                            value: 'week-2',
+                            value: 'Week 2',
                         },
                         {
                             label: 'Week 3',
-                            value: 'week-3',
+                            value: 'Week 3',
                         },
                         {
                             label: 'Week 4',
-                            value: 'week-4'
+                            value: 'Week 4'
                         }
                     ]}
                     name="difficulty"
@@ -81,23 +95,27 @@ const SubmitForm = (props) => {
                 <SprkSelectionInput
                     choices={[
                         {
-                            value: "usc",
+                            label: 'Click to select a topic',
+                            value: null
+                        },
+                        {
+                            value: "USC",
                             label: "USC"
                         },
                         {
-                            value: "mlo",
+                            value: "MLO",
                             label: "MLO"
                         },
                         {
-                            value: "gmk",
+                            value: "GMK",
                             label: "GMK"
                         },
                         {
-                            value: "fed-law",
+                            value: "Federal Law",
                             label: "Federal Law"
                         },
                         {
-                            value: "ethics",
+                            value: "Ethics",
                             label: "Ethics"
                         },
                     ]}
@@ -113,111 +131,115 @@ const SubmitForm = (props) => {
                 <SprkSelectionInput
                     choices={[
                         {
-                            value: "history",
+                            value: null,
+                            label: 'Click to select a subtopic'
+                        },
+                        {
+                            value: "Histroy",
                             label: "History"
                         },
                         {
-                            value: "who-is-who",
+                            value: "Who's Who?",
                             label: "Who's Who?"
                         },
                         {
-                            value: "mlo-timeline",
+                            value: "MLO Timeline",
                             label: "MLO Timeline"
                         },
                         {
-                            value: "agencies",
+                            value: "Agencies",
                             label: "Agencies"
                         },
                         {
-                            value: "your-license",
+                            value: "Your License",
                             label: "Your License"
                         },
                         {
-                            value: "respa",
+                            value: "RESPA",
                             label: "RESPA"
                         },
                         {
-                            value: "products",
+                            value: "Products",
                             label: "Products"
                         },
                         {
-                            value: "mortgage-math-1",
+                            value: "Mortgage Math 1",
                             label: "Mortgage Math 1"
                         },
                         {
-                            value: "programs",
+                            value: "Programs",
                             label: "Programs"
                         },
                         {
-                            value: "ecoa",
+                            value: "ECOA",
                             label: "ECOA"
                         },
                         {
-                            value: "consumer-contact-laws",
+                            value: "Consumer Contact Laws",
                             label: "Consumer Contact Laws"
                         },
                         {
-                            value: "borrower-ethics-and-fraud",
+                            value: "Borrower Ethics and Fraud",
                             label: "Borrower Ethics and Fraud"
                         },
                         {
-                            value: "industry-fraud",
+                            value: "Industry Fraud",
                             label: "Industry Fraud"
                         },
                         {
-                            value: "industry-ethics",
+                            value: "Industry Ethics",
                             label: "Industry Ethics"
                         },
                         {
-                            value: "insurances",
+                            value: "Insurances",
                             label: "Insurances"
                         },
                         {
-                            value: "third-party-services",
+                            value: "Third Party Services",
                             label: "Third Party Services"
                         },
                         {
-                            value: "mortgage-math-2",
+                            value: "Mortgage Math 2",
                             label: "Mortgage Math 2"
                         },
                         {
-                            value: "tila",
+                            value: "TILA",
                             label: "TILA"
                         },
                         {
-                            value: "fairness-laws",
+                            value: "Fairness Laws",
                             label: "Fairness Laws"
                         },
                         {
-                            value: "financial-crimes-laws",
+                            value: "Financial Crimes Laws",
                             label: "Financial Crimes Laws"
                         },
                         {
-                            value: "disclosures-and-documents",
+                            value: "Disclosures and Documents",
                             label: "Disclosures and Documents"
                         },
                         {
-                            value: "closing",
+                            value: "Closing",
                             label: "Closing"
                         },
                         {
-                            value: "remittance-and-ownership",
+                            value: "Remittance and Ownership",
                             label: "Remittance and Ownership"
                         },
                         {
-                            value: "repayment",
+                            value: "Repayment",
                             label: "Repayment"
                         },
                         {
-                            value: "trid",
+                            value: "TRID",
                             label: "TRID"
                         },
                         {
-                            value: "vocab",
+                            value: "Vocab",
                             label: "Vocab"
                         },
                         {
-                            value: "temporary-authority",
+                            value: "Temporary Authority",
                             label: "Temporary Authority"
                         },
                     ]}

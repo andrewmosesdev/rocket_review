@@ -1,4 +1,6 @@
 import ResultGrid from "../components/ResultGrid";
+import TopicsGrid from '../components/TopicsGrid';
+import SubTopicsGrid from '../components/SubTopicsGrid';
 
 function Review() {
 
@@ -8,7 +10,14 @@ function Review() {
                 Review Page
             </h2>
             <br/>
-            <ResultGrid/>
+            <TopicsGrid />
+            <br/>
+            <SubTopicsGrid />
+            <br />
+            <ResultGrid />
+            <br />
+
+            
         </div>
     );
 }
