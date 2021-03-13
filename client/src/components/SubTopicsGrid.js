@@ -35,6 +35,17 @@ const SubTopicsGrid = () => {
         }
     }
 
+    const [checkedItems, setCheckedItems] = useState({});
+    const handleChange = (event) => {
+        setCheckedItems({ ...checkedItems, [event.target.name]: event.target.checked });
+    }
+
+    useEffect(() => {
+        console.log('checkedSubTopics: ', checkedItems);
+    }, [checkedItems]);
+
+    const checkboxes = subTopicResultsFiltered;
+
     return (
         <div>
             <SprkCheckboxGroup variant='huge'>
@@ -45,10 +56,10 @@ const SubTopicsGrid = () => {
                     isPageTitle
                     idString='heading-component-options'
                     >Subtopics</SprkHeading></SprkLegend>
-                    {subTopicResultsFiltered.map(result => {
+                    {checkboxes.map(result => {
                         return (
                             <div key={result._id}>
-                                <SprkCheckboxItem name={result.subTopic} variant='huge'>
+                                <SprkCheckboxItem name={result.subTopic} variant='huge' onChange={handleChange}>
                                     {result.subTopic}
                                 </SprkCheckboxItem>
                             </div>

@@ -6,9 +6,6 @@ import axios from 'axios';
 const TopicsGrid = () => {
     const [results, setResults] = useState([]);
     const [refresh, toggleRefresh] = useState(0);
-    const refreshParent = () => {
-        toggleRefresh(refresh + 1);
-    };
 
     useEffect(() => {
         fetchReviewItems();
@@ -35,6 +32,17 @@ const TopicsGrid = () => {
         }
     }
 
+    const [checkedItems, setCheckedItems] = useState({});
+    const handleChange = (event) => {
+        setCheckedItems({ ...checkedItems, [event.target.name]: event.target.checked });
+    }
+
+    useEffect(() => {
+        console.log('checkedTopics: ', checkedItems);
+    }, [checkedItems]);
+
+    const checkboxes = resultsFiltered;
+
     return (
         <div>
             <SprkCheckboxGroup variant='huge'>
@@ -45,10 +53,10 @@ const TopicsGrid = () => {
                         isPageTitle
                         idString='heading-component-options'
                     >Topics</SprkHeading></SprkLegend>
-                    {resultsFiltered.map(result => {
+                    {checkboxes.map(result => {
                         return (
                             <div key={result._id}>
-                                <SprkCheckboxItem name='checkboxName' variant='huge'>
+                                <SprkCheckboxItem name={result.topic} variant='huge' onChange={handleChange}>
                                     {result.topic}
                                 </SprkCheckboxItem>
                             </div>

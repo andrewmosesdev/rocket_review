@@ -4,26 +4,13 @@ import { useState, useEffect } from 'react';
 
 const DifficultyGrid = () => {
 
-    // const [checkedStatus, setCheckedStatus] = useState(false);
-
-    // const handleCheck = () => {
-    //     let options = [1, 2, 3, 4];
-    //     options.forEach(checked => {
-    //         console.log(checked, checkedStatus)
-    //         if(checked.key == checked){
-    //             checkedStatus == false ? setCheckedStatus(true) : setCheckedStatus(false)
-    //         }
-    //     })
-
-    // };
-
     const [checkedItems, setCheckedItems] = useState({});
     const handleChange = (event) => {
         setCheckedItems({ ...checkedItems, [event.target.name]: event.target.checked });
     }
 
     useEffect(() => {
-        console.log('checkedItems: ', checkedItems);
+        console.log('checkedDifficulty: ', checkedItems);
     }, [checkedItems]);
 
     const checkboxes = [
@@ -43,7 +30,7 @@ const DifficultyGrid = () => {
             name: 'Week 4',
             key: 4
         },
-    ]
+    ];
 
     return (
         <div>
@@ -64,21 +51,6 @@ const DifficultyGrid = () => {
                             </div>
                         )
                     })}
-                    {/* <div key={2}>
-                        <SprkCheckboxItem name='week-2' variant='huge' onChange={handleCheck}>
-                            Week 2
-                                </SprkCheckboxItem>
-                    </div>
-                    <div key={3}>
-                        <SprkCheckboxItem name='week-3' variant='huge' onChange={handleCheck}>
-                            Week 3
-                                </SprkCheckboxItem>
-                    </div>
-                    <div key={4}>
-                        <SprkCheckboxItem name='week-4' variant='huge' onChange={handleCheck}>
-                            Week 4
-                                </SprkCheckboxItem>
-                    </div> */}
                 </SprkFieldset>
             </SprkCheckboxGroup>
 
