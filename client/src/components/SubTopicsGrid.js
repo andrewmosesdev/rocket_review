@@ -1,3 +1,4 @@
+import React from 'react';
 import { SprkCheckboxGroup, SprkFieldset, SprkLegend, SprkCheckboxItem, SprkHeading } from '@sparkdesignsystem/spark-react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -47,7 +48,7 @@ const SubTopicsGrid = () => {
                     {subTopicResultsFiltered.map(result => {
                         return (
                             <div key={result._id}>
-                                <SprkCheckboxItem name='checkboxName' variant='huge'>
+                                <SprkCheckboxItem name={result.subTopic} variant='huge'>
                                     {result.subTopic}
                                 </SprkCheckboxItem>
                             </div>

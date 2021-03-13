@@ -4,6 +4,7 @@ import SubTopicsGrid from '../components/SubTopicsGrid';
 import DifficultyGrid from '../components/DifficultyGrid';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import API from "../utils/API";
 function Review() {
     const [results, setResults] = useState([]);
     const [refresh, toggleRefresh] = useState(0);
@@ -19,6 +20,12 @@ function Review() {
         const { data } = await axios.get('/api/revObjs');
         setResults(data);
     };
+
+    // const toggleFlagged = async (id, flaggedStatus) => {
+    //     const flippedFlaggedStatus = !flaggedStatus;
+    //     await API.changeFlagged(id, flippedFlaggedStatus);
+    //     fetchReviewItems();
+    // }
 
     return (
         <div>

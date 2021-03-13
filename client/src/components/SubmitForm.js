@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import { SprkTextInput, SprkSelectionInput, SprkAlert } from '@sparkdesignsystem/spark-react';
@@ -13,8 +14,6 @@ const SubmitForm = (props) => {
     const [open, setOpen] = useState(false);
     const handleClick = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
-
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -40,9 +39,6 @@ const SubmitForm = (props) => {
             setSubTopic('');
             handleClose()
         }
-        
-        
-
     };
 
     return (
@@ -258,7 +254,7 @@ const SubmitForm = (props) => {
                 />
                 
                 <br/>
-                <button type='submit'>Save Question</button>
+                <button type='submit'>Submit Question</button>
                 <br />
                 <SprkAlert
                     role='alert'

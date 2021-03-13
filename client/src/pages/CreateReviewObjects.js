@@ -7,12 +7,7 @@ const CreateReviewObjects = function () {
 
     // so we can refresh the Page *after* we get a response back from the server on our new note!
     const [refresh] = useState(0);
-    // const refreshParent = () => {
-    //     toggleRefresh(refresh + 1);
-    // };
-
-    // Notice deps has refresh in there - this way when it increments from someone submitting
-    // it calls fetch notes again.
+    
     useEffect(() => {
         fetchRevObjs();
     }, [refresh]);
