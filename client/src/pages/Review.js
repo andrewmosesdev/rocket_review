@@ -1,6 +1,7 @@
 import ResultGrid from "../components/ResultGrid";
 import TopicsGrid from '../components/TopicsGrid';
 import SubTopicsGrid from '../components/SubTopicsGrid';
+import DifficultyGrid from '../components/DifficultyGrid';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 function Review() {
@@ -9,7 +10,7 @@ function Review() {
     const refreshParent = () => {
         toggleRefresh(refresh + 1);
     };
-    
+
     useEffect(() => {
         fetchReviewItems();
     }, [refresh]);
@@ -24,9 +25,10 @@ function Review() {
             <h2>
                 Review Page
             </h2>
-            <br/>
+            <DifficultyGrid />
+            <br />
             <TopicsGrid />
-            <br/>
+            <br />
             <SubTopicsGrid />
             <br />
             <ResultGrid />
