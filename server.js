@@ -1,7 +1,6 @@
 require('dotenv').config();
 require('./utils/verifyConfiguration')();
 const express = require('express');
-const bodyParser = require('body-parser');
 const path = require('path');
 const routes = require('./controllers')
 const PORT = process.env.PORT || 3001;
@@ -17,7 +16,6 @@ if (process.env.NODE_ENV !== 'production') {
 // app.use for adminbro location is important; must be before 20-28
 app.use('/admin', require('./utils/admin'));
 
-app.use(bodyParser.json());
 app.use(compression());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

@@ -17,6 +17,23 @@ const SubTopicsGrid = () => {
         setResults(data);
     };
 
+    const subTopicResultsFiltered = [];
+    let subCounter;
+
+    for(let i = 0; i < results.length; i++){
+        subCounter = 0
+        for(let j = i + 1; j < results.length; j++){
+            
+            if(results[i].topic == results[j].topic){
+                subCounter ++;
+            }
+
+        }
+        if(subCounter < 1){
+            subTopicResultsFiltered.push(results[i])
+        }
+    }
+
     return (
         <div>
             <SprkCheckboxGroup variant='huge'>
@@ -27,7 +44,7 @@ const SubTopicsGrid = () => {
                     isPageTitle
                     idString='heading-component-options'
                     >Subtopics</SprkHeading></SprkLegend>
-                    {results.map(result => {
+                    {subTopicResultsFiltered.map(result => {
                         return (
                             <div key={result._id}>
                                 <SprkCheckboxItem name='checkboxName' variant='huge'>

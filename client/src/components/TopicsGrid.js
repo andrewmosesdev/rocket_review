@@ -17,17 +17,34 @@ const TopicsGrid = () => {
         setResults(data);
     };
 
+    const resultsFiltered = [];
+    let counter;
+
+    for(let i = 0; i < results.length; i++){
+        counter = 0
+        for(let j = i + 1; j < results.length; j++){
+            
+            if(results[i].topic == results[j].topic){
+                counter ++;
+            }
+
+        }
+        if(counter < 1){
+            resultsFiltered.push(results[i])
+        }
+    }
+
     return (
         <div>
             <SprkCheckboxGroup variant='huge'>
                 <SprkFieldset>
-                    <SprkLegend><SprkHeading 
-                    element='h1'
-                    variant='displayTwo'
-                    isPageTitle
-                    idString='heading-component-options'
+                    <SprkLegend><SprkHeading
+                        element='h1'
+                        variant='displayTwo'
+                        isPageTitle
+                        idString='heading-component-options'
                     >Topics</SprkHeading></SprkLegend>
-                    {results.map(result => {
+                    {resultsFiltered.map(result => {
                         return (
                             <div key={result._id}>
                                 <SprkCheckboxItem name='checkboxName' variant='huge'>

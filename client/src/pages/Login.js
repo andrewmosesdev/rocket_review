@@ -15,7 +15,6 @@ const Login = () => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        console.log(event);
         if (event.keydown === 13) {
             login(email, password).then(res => {
                 history.replace(from);
@@ -27,7 +26,7 @@ const Login = () => {
     };
 
     if (isLoggedIn()) {
-        return <Redirect to={'/review'} />;
+        return <Redirect to={location.state || '/'} />;
     }
 
     return (

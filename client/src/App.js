@@ -42,7 +42,7 @@ function App() {
                 <Route exact path='/'>
                     <Login />
                 </Route>
-                <Route path='/login'>
+                <Route exact path='/login'>
                     <Login />
                 </Route>
                 <PrivateRoute exact path='/create-review'>

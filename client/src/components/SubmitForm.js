@@ -15,7 +15,6 @@ const SubmitForm = (props) => {
     const handleClose = () => setOpen(false);
 
 
-    console.log(question, answer, difficulty, topic, subTopic)
 
     const handleSubmit = event => {
         event.preventDefault();

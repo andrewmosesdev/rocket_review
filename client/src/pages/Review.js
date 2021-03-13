@@ -1,8 +1,23 @@
 import ResultGrid from "../components/ResultGrid";
 import TopicsGrid from '../components/TopicsGrid';
 import SubTopicsGrid from '../components/SubTopicsGrid';
-
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 function Review() {
+    const [results, setResults] = useState([]);
+    const [refresh, toggleRefresh] = useState(0);
+    const refreshParent = () => {
+        toggleRefresh(refresh + 1);
+    };
+    
+    useEffect(() => {
+        fetchReviewItems();
+    }, [refresh]);
+
+    async function fetchReviewItems() {
+        const { data } = await axios.get('/api/revObjs');
+        setResults(data);
+    };
 
     return (
         <div>
@@ -16,8 +31,6 @@ function Review() {
             <br />
             <ResultGrid />
             <br />
-
-            
         </div>
     );
 }

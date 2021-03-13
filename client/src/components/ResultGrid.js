@@ -7,7 +7,6 @@ const _ = require('lodash');
 const ResultGrid = () => {
     const [results, setResults] = useState([]);
     let resultsMap = results.map(result => result)
-    console.log(resultsMap)
     const [refresh, toggleRefresh] = useState(0);
     const refreshParent = () => {
         toggleRefresh(refresh + 1);
