@@ -10,7 +10,7 @@ const TopicsGrid = () => {
     useEffect(() => {
         fetchReviewItems();
     }, [refresh]);
-    
+
     async function fetchReviewItems() {
         const { data } = await axios.get('/api/revObjs');
         setResults(data);
@@ -56,7 +56,7 @@ const TopicsGrid = () => {
                     >Topics</SprkHeading></SprkLegend>
                     {topicsCheckboxes.map(result => {
                         return (
-                            <div key={result._id}>
+                            <div key={result.topic}>
                                 <SprkCheckboxItem name={result.topic} variant='huge' onChange={handleChange}>
                                     {result.topic}
                                 </SprkCheckboxItem>

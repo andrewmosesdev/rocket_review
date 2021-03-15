@@ -3,14 +3,19 @@ import axios from 'axios';
 import { SprkPromo, SprkLink, SprkButton } from "@sparkdesignsystem/spark-react";
 const _ = require('lodash');
 import React from 'react';
-// import { result } from 'lodash';
+import DifficultyGrid from './DifficultyGrid';
+import SubTopicsGrid from './SubTopicsGrid';
+import TopicsGrid from './TopicsGrid';
 import API from '../utils/API';
 
 
 const ResultGrid = () => {
     const [results, setResults] = useState([]);
     const [refresh, toggleRefresh] = useState(0);
-    // const [flaggedStatus, setFlaggedStatus] = useState(false);
+
+    // const difficultyPath = DifficultyGrid().props.children.props.children.props.children[1];
+    // const subTopicsPath = SubTopicsGrid().props.children.props.children.props.children[1];
+    // const topicsPath = TopicsGrid().props.children.props.children.props.children[1];
 
     useEffect(() => {
         fetchReviewItems();
@@ -32,9 +37,10 @@ const ResultGrid = () => {
         <div>
             {(_.shuffle(results.map(result => {
                 if (result.isFlagged == false) {
-                    // console.log(result._id)
                     return (
+                        
                         <div key={result._id}>
+                            
                             <SprkPromo
                                 title={result.question}
                                 subtitle={result.topic + ", " + result.subTopic + ", " + result.difficulty}

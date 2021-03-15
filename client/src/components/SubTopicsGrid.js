@@ -21,16 +21,16 @@ const SubTopicsGrid = () => {
     const subTopicResultsFiltered = [];
     let subCounter;
 
-    for(let i = 0; i < results.length; i++){
+    for (let i = 0; i < results.length; i++) {
         subCounter = 0
-        for(let j = i + 1; j < results.length; j++){
-            
-            if(results[i].topic == results[j].topic){
-                subCounter ++;
+        for (let j = i + 1; j < results.length; j++) {
+
+            if (results[i].topic == results[j].topic) {
+                subCounter++;
             }
 
         }
-        if(subCounter < 1){
+        if (subCounter < 1) {
             subTopicResultsFiltered.push(results[i])
         }
     }
@@ -50,15 +50,15 @@ const SubTopicsGrid = () => {
         <div>
             <SprkCheckboxGroup variant='huge'>
                 <SprkFieldset>
-                    <SprkLegend><SprkHeading 
-                    element='h1'
-                    variant='displayTwo'
-                    isPageTitle
-                    idString='heading-component-options'
+                    <SprkLegend><SprkHeading
+                        element='h1'
+                        variant='displayTwo'
+                        isPageTitle
+                        idString='heading-component-options'
                     >Subtopics</SprkHeading></SprkLegend>
                     {subTopicsCheckboxes.map(result => {
                         return (
-                            <div key={result._id}>
+                            <div key={result.subTopic}>
                                 <SprkCheckboxItem name={result.subTopic} variant='huge' onChange={handleChange}>
                                     {result.subTopic}
                                 </SprkCheckboxItem>

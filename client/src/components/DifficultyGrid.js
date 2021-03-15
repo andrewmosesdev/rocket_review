@@ -15,19 +15,19 @@ const DifficultyGrid = () => {
 
     const difficultyCheckboxes = [
         {
-            name: 'Week 1',
+            difficulty: 'Week 1',
             key: 1
         },
         {
-            name: 'Week 2',
+            difficulty: 'Week 2',
             key: 2
         },
         {
-            name: 'Week 3',
+            difficulty: 'Week 3',
             key: 3
         },
         {
-            name: 'Week 4',
+            difficulty: 'Week 4',
             key: 4
         },
     ];
@@ -44,9 +44,9 @@ const DifficultyGrid = () => {
                     >Difficulty</SprkHeading></SprkLegend>
                     {difficultyCheckboxes.map(item => {
                         return (
-                            <div key={item.key}>
-                                <SprkCheckboxItem name={item.name} variant='huge' onChange={handleChange}>
-                                    {item.name}
+                            <div key={item.difficulty}>
+                                <SprkCheckboxItem name={item.difficulty} variant='huge' onChange={handleChange}>
+                                    {item.difficulty}
                                 </SprkCheckboxItem>
                             </div>
                         )
