@@ -13,7 +13,7 @@ const DifficultyGrid = () => {
         console.log('checkedDifficulty: ', checkedItems);
     }, [checkedItems]);
 
-    const checkboxes = [
+    const difficultyCheckboxes = [
         {
             name: 'Week 1',
             key: 1
@@ -42,7 +42,7 @@ const DifficultyGrid = () => {
                         isPageTitle
                         idString='heading-component-options'
                     >Difficulty</SprkHeading></SprkLegend>
-                    {checkboxes.map(item => {
+                    {difficultyCheckboxes.map(item => {
                         return (
                             <div key={item.key}>
                                 <SprkCheckboxItem name={item.name} variant='huge' onChange={handleChange}>

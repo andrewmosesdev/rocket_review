@@ -44,7 +44,7 @@ const SubTopicsGrid = () => {
         console.log('checkedSubTopics: ', checkedItems);
     }, [checkedItems]);
 
-    const checkboxes = subTopicResultsFiltered;
+    const subTopicsCheckboxes = subTopicResultsFiltered;
 
     return (
         <div>
@@ -56,7 +56,7 @@ const SubTopicsGrid = () => {
                     isPageTitle
                     idString='heading-component-options'
                     >Subtopics</SprkHeading></SprkLegend>
-                    {checkboxes.map(result => {
+                    {subTopicsCheckboxes.map(result => {
                         return (
                             <div key={result._id}>
                                 <SprkCheckboxItem name={result.subTopic} variant='huge' onChange={handleChange}>

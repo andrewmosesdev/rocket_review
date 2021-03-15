@@ -10,6 +10,7 @@ const TopicsGrid = () => {
     useEffect(() => {
         fetchReviewItems();
     }, [refresh]);
+    
     async function fetchReviewItems() {
         const { data } = await axios.get('/api/revObjs');
         setResults(data);
@@ -41,7 +42,7 @@ const TopicsGrid = () => {
         console.log('checkedTopics: ', checkedItems);
     }, [checkedItems]);
 
-    const checkboxes = resultsFiltered;
+    const topicsCheckboxes = resultsFiltered;
 
     return (
         <div>
@@ -53,7 +54,7 @@ const TopicsGrid = () => {
                         isPageTitle
                         idString='heading-component-options'
                     >Topics</SprkHeading></SprkLegend>
-                    {checkboxes.map(result => {
+                    {topicsCheckboxes.map(result => {
                         return (
                             <div key={result._id}>
                                 <SprkCheckboxItem name={result.topic} variant='huge' onChange={handleChange}>

@@ -1,17 +1,16 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { SprkPromo } from "@sparkdesignsystem/spark-react";
+import { SprkPromo, SprkLink, SprkButton } from "@sparkdesignsystem/spark-react";
 const _ = require('lodash');
 import React from 'react';
+// import { result } from 'lodash';
+import API from '../utils/API';
 
 
 const ResultGrid = () => {
     const [results, setResults] = useState([]);
-    // let resultsMap = results.map(result => result)
     const [refresh, toggleRefresh] = useState(0);
-    const refreshParent = () => {
-        toggleRefresh(refresh + 1);
-    };
+    // const [flaggedStatus, setFlaggedStatus] = useState(false);
 
     useEffect(() => {
         fetchReviewItems();
@@ -22,49 +21,65 @@ const ResultGrid = () => {
         setResults(data);
     };
 
+    const toggleFlagged = async (id, flaggedStatus) => {
+        const flippedFlaggedStatus = !flaggedStatus;
+        console.log(id.target.id)
+        await API.changeFlagged(id.target.id, flippedFlaggedStatus);
+        fetchReviewItems();
+    }
+
     return (
         <div>
             {(_.shuffle(results.map(result => {
-                if(result.isFlagged == false){
-                return (
-                    <div key={result._id}>
-                        <SprkPromo
-                            title={result.question}
-                            subtitle={result.topic + ", " + result.subTopic + ", " + result.difficulty}
-                            additionalClasses='sprk-o-Stack--split@s'
-                            cta='button'
-                            ctaText='Flag this review item'
-                            ctaHref='#'
-                            ctaAnalytics='promo-cta-1-analytics'
-                            ctaIdString='promo-cta-1'
-                            hasBorder
-                            idString='promo-1'
-                            
-                            >
-                                {result.answer}
-                        </SprkPromo>
-                    </div>
-                )} 
-                else{
+                if (result.isFlagged == false) {
+                    // console.log(result._id)
                     return (
-                    <div key={result._id}>
-                        <SprkPromo
-                            title={result.question}
-                            subtitle={result.topic + ", " + result.subTopic + ", " + result.difficulty}
-                            additionalClasses='sprk-o-Stack--split@s'
-                            ctaAnalytics='promo-cta-1-analytics'
-                            ctaIdString='promo-cta-1'
-                            hasBorder
-                            idString='promo-1'
-                            
+                        <div key={result._id}>
+                            <SprkPromo
+                                title={result.question}
+                                subtitle={result.topic + ", " + result.subTopic + ", " + result.difficulty}
+                                additionalClasses='sprk-o-Stack--split@s'
+                                hasBorder
+                                idString={result._id}
                             >
                                 {result.answer}
-                                <br/>
-                                <br/>
+                                <br />
+                                <br />
+                                <SprkButton
+                                    idString="button-1"
+                                    analyticsString="button-1-analytics"
+                                    id={result._id}
+                                    onClick={toggleFlagged}
+                                >
+                                    Flag for review
+                                </SprkButton>
+                            </SprkPromo>
+
+
+                        </div>
+                    )
+                }
+                else {
+                    return (
+                        <div key={result._id}>
+                            <SprkPromo
+                                title={result.question}
+                                subtitle={result.topic + ", " + result.subTopic + ", " + result.difficulty}
+                                additionalClasses='sprk-o-Stack--split@s'
+                                ctaAnalytics='promo-cta-1-analytics'
+                                ctaIdString='promo-cta-1'
+                                hasBorder
+                                idString='promo-1'
+
+                            >
+                                {result.answer}
+                                <br />
+                                <br />
                                 This is flagged as incorrect or incomplete! The color of the promo needs to be updated, or text needs to be added
                         </SprkPromo>
-                    </div>
-                    )}
+                        </div>
+                    )
+                }
             })))}
         </div>
     )
