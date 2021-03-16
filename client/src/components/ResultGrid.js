@@ -32,7 +32,7 @@ const ResultGrid = () => {
         await API.changeFlagged(id.target.id, flippedFlaggedStatus);
         fetchReviewItems();
     }
-
+    // try passing down props or population all results in here
     return (
         <div>
             {(_.shuffle(results.map(result => {
