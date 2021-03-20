@@ -35,14 +35,14 @@ const SubTopicsGrid = () => {
         }
     }
 
-    const [checkedItems, setCheckedItems] = useState({});
+    const [checkedSubTopic, setCheckedSubTopic] = useState({});
     const handleChange = (event) => {
-        setCheckedItems({ ...checkedItems, [event.target.name]: event.target.checked });
+        setCheckedSubTopic({ ...checkedSubTopic, [event.target.name]: event.target.checked });
     }
 
     useEffect(() => {
-        console.log('checkedSubTopics: ', checkedItems);
-    }, [checkedItems]);
+        console.log('checkedSubTopics: ', checkedSubTopic);
+    }, [checkedSubTopic]);
 
     const subTopicsCheckboxes = subTopicResultsFiltered;
 

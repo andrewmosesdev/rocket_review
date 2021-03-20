@@ -33,14 +33,14 @@ const TopicsGrid = () => {
         }
     }
 
-    const [checkedItems, setCheckedItems] = useState({});
+    const [checkedTopics, setCheckedTopics] = useState({});
     const handleChange = (event) => {
-        setCheckedItems({ ...checkedItems, [event.target.name]: event.target.checked });
+        setCheckedTopics({ ...checkedTopics, [event.target.name]: event.target.checked });
     }
 
     useEffect(() => {
-        console.log('checkedTopics: ', checkedItems);
-    }, [checkedItems]);
+        console.log('checkedTopics: ', checkedTopics);
+    }, [checkedTopics]);
 
     const topicsCheckboxes = resultsFiltered;
 

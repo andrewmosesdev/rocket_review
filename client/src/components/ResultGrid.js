@@ -13,10 +13,6 @@ const ResultGrid = () => {
     const [results, setResults] = useState([]);
     const [refresh, toggleRefresh] = useState(0);
 
-    // const difficultyPath = DifficultyGrid().props.children.props.children.props.children[1];
-    // const subTopicsPath = SubTopicsGrid().props.children.props.children.props.children[1];
-    // const topicsPath = TopicsGrid().props.children.props.children.props.children[1];
-
     useEffect(() => {
         fetchReviewItems();
     }, [refresh]);
@@ -32,7 +28,7 @@ const ResultGrid = () => {
         await API.changeFlagged(id.target.id, flippedFlaggedStatus);
         fetchReviewItems();
     }
-    // try passing down props or population all results in here
+    
     return (
         <div>
             {(_.shuffle(results.map(result => {

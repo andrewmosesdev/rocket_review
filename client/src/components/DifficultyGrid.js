@@ -4,14 +4,14 @@ import { useState, useEffect } from 'react';
 
 const DifficultyGrid = () => {
 
-    const [checkedItems, setCheckedItems] = useState({});
+    const [checkedDifficulty, setCheckedDifficulty] = useState({});
     const handleChange = (event) => {
-        setCheckedItems({ ...checkedItems, [event.target.name]: event.target.checked });
+        setCheckedDifficulty({ ...checkedDifficulty, [event.target.name]: event.target.checked });
     }
 
     useEffect(() => {
-        console.log('checkedDifficulty: ', checkedItems);
-    }, [checkedItems]);
+        console.log('checkedDifficulty: ', checkedDifficulty);
+    }, [checkedDifficulty]);
 
     const difficultyCheckboxes = [
         {
