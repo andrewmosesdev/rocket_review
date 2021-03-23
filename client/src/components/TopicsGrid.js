@@ -3,7 +3,7 @@ import { SprkCheckboxGroup, SprkFieldset, SprkLegend, SprkCheckboxItem, SprkHead
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const TopicsGrid = () => {
+const TopicsGrid = (props) => {
     const [results, setResults] = useState([]);
     const [refresh, toggleRefresh] = useState(0);
 
@@ -34,7 +34,23 @@ const TopicsGrid = () => {
     }
 
     const [checkedTopics, setCheckedTopics] = useState({});
+
     const handleChange = (event) => {
+
+        if(event.target.checked){
+            
+        props.setQuestions(state => [...state, event.target.name])
+        
+        } else {
+
+            const oldTopicArray = props.questions.filter(item => {
+                return item !== event.target.name;
+            })
+
+            props.setQuestions(oldTopicArray)
+            
+        }
+
         setCheckedTopics({ ...checkedTopics, [event.target.name]: event.target.checked });
     }
 

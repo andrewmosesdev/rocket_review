@@ -26,13 +26,28 @@ const ResultGrid = (props) => {
         fetchReviewItems();
     }
 
-    // 
+
 
     return (
         <div>
             {(_.shuffle(results.map(result => {
-                console.log(results)
-                if (props.questions.includes(result.difficulty)) {
+                let propDifficulty = props.questions.includes(result.difficulty);
+                let propTopic = props.questions.includes(result.topic);
+                let propSubTopic = props.questions.includes(result.subTopic);
+                // console.log("here! + " + results)
+                if (propDifficulty) {
+                    return (
+                        <div>
+                            <Questions result={result} onClick={toggleFlagged} />
+                        </div>
+                    )
+                } else if (propTopic) {
+                    return (
+                        <div>
+                            <Questions result={result} onClick={toggleFlagged} />
+                        </div>
+                    )
+                } else if (propSubTopic) {
                     return (
                         <div>
                             <Questions result={result} onClick={toggleFlagged} />

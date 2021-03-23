@@ -9,6 +9,7 @@ function Review() {
 
     const [questions, setQuestions] = useState([]);
     
+    console.log(questions)
     return (
         <div>
             <h2>
@@ -16,9 +17,9 @@ function Review() {
             </h2>
             <DifficultyGrid questions={questions} setQuestions={setQuestions}/>
             <br />
-            <TopicsGrid />
+            <TopicsGrid questions={questions} setQuestions={setQuestions}/>
             <br />
-            <SubTopicsGrid />
+            <SubTopicsGrid questions={questions} setQuestions={setQuestions}/>
             <br />
             <ResultGrid questions={questions}/>
             <br />

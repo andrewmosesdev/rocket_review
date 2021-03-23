@@ -3,7 +3,7 @@ import { SprkCheckboxGroup, SprkFieldset, SprkLegend, SprkCheckboxItem, SprkHead
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const SubTopicsGrid = () => {
+const SubTopicsGrid = (props) => {
     const [results, setResults] = useState([]);
     const [refresh, toggleRefresh] = useState(0);
     const refreshParent = () => {
@@ -37,6 +37,21 @@ const SubTopicsGrid = () => {
 
     const [checkedSubTopic, setCheckedSubTopic] = useState({});
     const handleChange = (event) => {
+
+        if (event.target.checked) {
+
+            props.setQuestions(state => [...state, event.target.name])
+
+        } else {
+
+            const oldSubTopicArray = props.questions.filter(item => {
+                return item !== event.target.name;
+            })
+
+            props.setQuestions(oldSubTopicArray)
+
+        }
+
         setCheckedSubTopic({ ...checkedSubTopic, [event.target.name]: event.target.checked });
     }
 
@@ -58,7 +73,7 @@ const SubTopicsGrid = () => {
                     >Subtopics</SprkHeading></SprkLegend>
                     {subTopicsCheckboxes.map(result => {
                         return (
-                            <div key={result.subTopic}>
+                            <div key={result._id}>
                                 <SprkCheckboxItem name={result.subTopic} variant='huge' onChange={handleChange}>
                                     {result.subTopic}
                                 </SprkCheckboxItem>
