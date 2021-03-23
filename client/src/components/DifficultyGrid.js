@@ -2,10 +2,26 @@ import { SprkCheckboxGroup, SprkFieldset, SprkLegend, SprkCheckboxItem, SprkHead
 import React from 'react';
 import { useState, useEffect } from 'react';
 
-const DifficultyGrid = () => {
+const DifficultyGrid = (props) => {
 
     const [checkedDifficulty, setCheckedDifficulty] = useState({});
+
     const handleChange = (event) => {
+        if(event.target.checked){
+
+            props.setQuestions(state => [...state, event.target.name])
+        
+        } else {
+
+            const oldArray = props.questions.filter(item => {
+                return item !== event.target.name;
+            })
+
+            props.setQuestions(oldArray)
+            
+        }
+        
+
         setCheckedDifficulty({ ...checkedDifficulty, [event.target.name]: event.target.checked });
     }
 

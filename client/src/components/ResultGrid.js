@@ -1,15 +1,12 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { SprkPromo, SprkLink, SprkButton } from "@sparkdesignsystem/spark-react";
-const _ = require('lodash');
 import React from 'react';
-import DifficultyGrid from './DifficultyGrid';
-import SubTopicsGrid from './SubTopicsGrid';
-import TopicsGrid from './TopicsGrid';
 import API from '../utils/API';
+import Questions from './Questions';
 
+const _ = require('lodash');
 
-const ResultGrid = () => {
+const ResultGrid = (props) => {
     const [results, setResults] = useState([]);
     const [refresh, toggleRefresh] = useState(0);
 
@@ -28,57 +25,17 @@ const ResultGrid = () => {
         await API.changeFlagged(id.target.id, flippedFlaggedStatus);
         fetchReviewItems();
     }
-    
+
+    // 
+
     return (
         <div>
             {(_.shuffle(results.map(result => {
-                if (result.isFlagged == false) {
+                console.log(results)
+                if (props.questions.includes(result.difficulty)) {
                     return (
-                        
-                        <div key={result._id}>
-                            
-                            <SprkPromo
-                                title={result.question}
-                                subtitle={result.topic + ", " + result.subTopic + ", " + result.difficulty}
-                                additionalClasses='sprk-o-Stack--split@s'
-                                hasBorder
-                                idString={result._id}
-                            >
-                                {result.answer}
-                                <br />
-                                <br />
-                                <SprkButton
-                                    idString="button-1"
-                                    analyticsString="button-1-analytics"
-                                    id={result._id}
-                                    onClick={toggleFlagged}
-                                >
-                                    Flag for review
-                                </SprkButton>
-                            </SprkPromo>
-
-
-                        </div>
-                    )
-                }
-                else {
-                    return (
-                        <div key={result._id}>
-                            <SprkPromo
-                                title={result.question}
-                                subtitle={result.topic + ", " + result.subTopic + ", " + result.difficulty}
-                                additionalClasses='sprk-o-Stack--split@s'
-                                ctaAnalytics='promo-cta-1-analytics'
-                                ctaIdString='promo-cta-1'
-                                hasBorder
-                                idString='promo-1'
-
-                            >
-                                {result.answer}
-                                <br />
-                                <br />
-                                This is flagged as incorrect or incomplete! The color of the promo needs to be updated, or text needs to be added
-                        </SprkPromo>
+                        <div>
+                            <Questions result={result} onClick={toggleFlagged} />
                         </div>
                     )
                 }

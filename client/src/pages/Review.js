@@ -6,19 +6,21 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function Review() {
+
+    const [questions, setQuestions] = useState([]);
     
     return (
         <div>
             <h2>
                 Review Page
             </h2>
-            <DifficultyGrid />
+            <DifficultyGrid questions={questions} setQuestions={setQuestions}/>
             <br />
             <TopicsGrid />
             <br />
             <SubTopicsGrid />
             <br />
-            <ResultGrid />
+            <ResultGrid questions={questions}/>
             <br />
         </div>
     );
