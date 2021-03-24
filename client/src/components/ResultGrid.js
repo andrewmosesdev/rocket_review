@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import React from 'react';
 import Questions from './Questions';
+import SprkPromo from '@sparkdesignsystem/spark-react'
 
 const _ = require('lodash');
 
@@ -25,25 +26,29 @@ const ResultGrid = (props) => {
                 let propTopic = props.questions.includes(result.topic);
                 let propSubTopic = props.questions.includes(result.subTopic);
 
-                if (propDifficulty) {
+
+                if (propDifficulty && propTopic && propSubTopic) {
                     return (
                         <div>
                             <Questions result={result} />
                         </div>
                     )
-                } else if (propTopic) {
+                } else if (propDifficulty && propTopic) {
                     return (
                         <div>
                             <Questions result={result} />
                         </div>
                     )
-                } else if (propSubTopic) {
+                } else if (propDifficulty && propSubTopic) {
                     return (
                         <div>
                             <Questions result={result} />
                         </div>
                     )
+                } else {
+                    console.log('here!')
                 }
+                
             })))}
         </div>
     )

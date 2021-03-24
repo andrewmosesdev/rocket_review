@@ -2,8 +2,8 @@ import ResultGrid from "../components/ResultGrid";
 import TopicsGrid from '../components/TopicsGrid';
 import SubTopicsGrid from '../components/SubTopicsGrid';
 import DifficultyGrid from '../components/DifficultyGrid';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
+
 
 function Review() {
 
@@ -15,6 +15,17 @@ function Review() {
             <h2>
                 Review Page
             </h2>
+            <br/>
+            <br/>
+            <h4>
+                Step 1. Choose a difficulty level
+                <br/>
+                Step 2. Choose a topic, subtopic, or both.
+                <br/>
+                Step 3. Review!
+            </h4>
+            <br/>
+            <br/>
             <DifficultyGrid questions={questions} setQuestions={setQuestions}/>
             <br />
             <TopicsGrid questions={questions} setQuestions={setQuestions}/>

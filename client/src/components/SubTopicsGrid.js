@@ -25,7 +25,7 @@ const SubTopicsGrid = (props) => {
         subCounter = 0
         for (let j = i + 1; j < results.length; j++) {
 
-            if (results[i].topic == results[j].topic) {
+            if (results[i].subTopic == results[j].subTopic) {
                 subCounter++;
             }
 
