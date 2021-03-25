@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-import { SprkTextInput, SprkSelectionInput, SprkAlert } from '@sparkdesignsystem/spark-react';
+import { SprkTextInput, SprkSelectionInput, SprkAlert, SprkCard } from '@sparkdesignsystem/spark-react';
 
 const SubmitForm = (props) => {
     const [question, setQuestion] = useState('');
@@ -9,7 +9,7 @@ const SubmitForm = (props) => {
     const [difficulty, setDifficulty] = useState('');
     const [topic, setTopic] = useState('');
     const [subTopic, setSubTopic] = useState('');
-    
+
     // for alert
     const [open, setOpen] = useState(false);
     const handleClick = () => setOpen(true);
@@ -43,8 +43,36 @@ const SubmitForm = (props) => {
 
     return (
         <div>
-            <h2>Question Submission</h2>
-            <form onSubmit={handleSubmit}>
+            <div style={{ marginLeft: '1%', marginRight: '1%' }}>
+
+
+                <SprkCard
+                    isStandout
+                    idString="card-20"
+                    additionalContentClasses="
+                    sprk-o-Stack
+                    sprk-o-Stack--medium">
+                    <h4>How to:</h4>
+                    <br />
+                    <h6>Type in a <strong>question</strong> and the correct <strong>answer</strong> to that question. After that, you'll need to choose a corresponding <strong>Difficulty</strong>, <strong>Topic</strong>, and <strong>Subtopic</strong>.
+                     <br/>
+                     Once you're ready to submit your review item, click the <strong>"Submit" button</strong>.</h6>
+                    <br />
+                    
+                </SprkCard>
+            </div>
+            <br/>
+            <br/>
+            <SprkAlert
+                    role='alert'
+                    message="Please fill out all fields before submitting"
+                    variant="fail"
+                    isVisible={open}
+                    idString="alert-fail"
+                    analyticsString="alert-fail-analytics"
+                    iconNameFail='exclamation-filled'
+                />
+            <form onSubmit={handleSubmit} style={{ marginLeft: '1%', marginRight: '1%' }}>
                 <label htmlFor="question">Question</label>
                 <SprkTextInput
                     label=""
@@ -53,7 +81,7 @@ const SubmitForm = (props) => {
                     value={question}
                     formatter={value => value == !null}
                     onChange={event => setQuestion(event.target.value)} />
-                <br />
+                
                 <label htmlFor="answer">Answer</label>
                 <SprkTextInput
                     label=""
@@ -61,7 +89,7 @@ const SubmitForm = (props) => {
                     type="textarea"
                     value={answer}
                     onChange={event => setAnswer(event.target.value)} />
-                <br />
+                
                 <label htmlFor='difficulty'>Difficulty</label>
                 <SprkSelectionInput
                     choices={[
@@ -92,7 +120,7 @@ const SubmitForm = (props) => {
                     value={difficulty}
                     onChange={event => setDifficulty(event.target.value)}
                 />
-                <br />
+                
                 <label htmlFor='topic'>Topic</label>
 
                 <SprkSelectionInput
@@ -129,7 +157,7 @@ const SubmitForm = (props) => {
                     onChange={event => setTopic(event.target.value)}
                 />
 
-                <br />
+                
                 <label htmlFor='sub-topic'>Subtopic</label>
                 <SprkSelectionInput
                     choices={[
@@ -252,19 +280,11 @@ const SubmitForm = (props) => {
                     value={subTopic}
                     onChange={event => setSubTopic(event.target.value)}
                 />
+
                 
-                <br/>
                 <button type='submit'>Submit Question</button>
                 <br />
-                <SprkAlert
-                    role='alert'
-                    message="Please fill out all fields before submitting"
-                    variant="fail"
-                    isVisible={open}
-                    idString="alert-fail"
-                    analyticsString="alert-fail-analytics"
-                    iconNameFail='exclamation-filled'
-                />
+                
             </form>
         </div>
     );

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import React from 'react';
 import Questions from './Questions';
+import {SprkStack, SprkStackItem} from '@sparkdesignsystem/spark-react';
 
 const _ = require('lodash');
 
@@ -19,7 +20,7 @@ const ResultGrid = (props) => {
     };
     
     return (
-        <div>
+        <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center'}}>
             {(_.shuffle(results.map(result => {
                 let propDifficulty = props.questions.includes(result.difficulty);
                 let propTopic = props.questions.includes(result.topic);
@@ -28,19 +29,19 @@ const ResultGrid = (props) => {
 
                 if (propDifficulty && propTopic || propDifficulty && propSubTopic) {
                     return (
-                        <div>
+                        <div style={{margin: '10px', width: '45%' }}>
                             <Questions result={result} />
                         </div>
                     )
                 } else if (propDifficulty && propTopic) {
                     return (
-                        <div>
+                        <div style={{margin: '10px', width: '45%' }}>
                             <Questions result={result} />
                         </div>
                     )
                 } else if (propDifficulty && propSubTopic) {
                     return (
-                        <div>
+                        <div style={{margin: '10px', width: '45%' }}>
                             <Questions result={result} />
                         </div>
                     )

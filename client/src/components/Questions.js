@@ -26,13 +26,13 @@ const Questions = ({ result }) => {
                 {result.answer}
                 <br />
                 <br />
-                {result.isFlagged ? 'This is flagged as incorrect or incomplete! The color of the promo needs to be updated, or text needs to be added' : <SprkButton
+                {result.isFlagged ? <h7> <strong> Warning: This has been flagged as incorrect or incomplete!  </strong></h7> : <SprkButton
                     idString="button-1"
                     analyticsString="button-1-analytics"
                     id={result._id}
                     onClick={toggleFlagged}
                 >
-                    Flag for review
+                    Flag
                 </SprkButton>}
 
             </SprkPromo>
