@@ -17,6 +17,8 @@ const CreateReviewObjects = function () {
         setRevObjs(data);
     }
 
+    console.log('need to add charts on question submission page')
+
     return (
         <div>
             <SubmitForm />

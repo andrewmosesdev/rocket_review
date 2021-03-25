@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import React from 'react';
 import Questions from './Questions';
-import SprkPromo from '@sparkdesignsystem/spark-react'
 
 const _ = require('lodash');
 
@@ -18,7 +17,7 @@ const ResultGrid = (props) => {
         const { data } = await axios.get('/api/revObjs');
         setResults(data);
     };
-
+    
     return (
         <div>
             {(_.shuffle(results.map(result => {
@@ -27,7 +26,7 @@ const ResultGrid = (props) => {
                 let propSubTopic = props.questions.includes(result.subTopic);
 
 
-                if (propDifficulty && propTopic && propSubTopic) {
+                if (propDifficulty && propTopic || propDifficulty && propSubTopic) {
                     return (
                         <div>
                             <Questions result={result} />
@@ -45,10 +44,7 @@ const ResultGrid = (props) => {
                             <Questions result={result} />
                         </div>
                     )
-                } else {
-                    console.log('here!')
                 }
-                
             })))}
         </div>
     )
