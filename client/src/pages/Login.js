@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Redirect, useHistory, useLocation } from 'react-router-dom';
 import useAuth from '../hooks/auth';
+import { SprkHighlightBoard, SprkTextInput, SprkRevealInput, SprkButton, SprkCenteredColumn } from '@sparkdesignsystem/spark-react';
 
 const Login = () => {
     const { login, isLoggedIn } = useAuth();
@@ -30,34 +31,39 @@ const Login = () => {
     }
 
     return (
-        <div>
-            <h2>
-                Rocket Review
-            </h2>
-            <br/>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor='email'>Email:</label>
-                <input
-                    name='email'
-                    placeholder='Email'
-                    type='email'
-                    autoComplete='username'
-                    value={email}
-                    onChange={event => setEmail(event.target.value)}
-                />
-                <br />
-                <label htmlFor='password'>Password:</label>
-                <input
-                    name='password'
-                    placeholder='Password'
-                    type='password'
-                    autoComplete='password'
-                    value={password}
-                    onChange={event => setPassword(event.target.value)}
-                />
-                <br />
-                <button type='submit'>Login</button>
-            </form>
+
+        <div style={{ marginTop: '10%' }}>
+            <SprkHighlightBoard
+
+                variant="noImage"
+
+                heading="Hello, Welcome To Rocket Review"
+
+                idString="highlightboard-2"
+
+            />
+
+            <div style={{display: 'flex', justifyContent: 'center'}}>
+                <form onSubmit={handleSubmit} style={{width: 'full', marginLeft: ''}}>
+                    <label htmlFor='username'>Username:</label>
+                    <SprkTextInput
+                        label=""
+                        name="username-input-label"
+                        onChange={event => setEmail(event.target.value)}
+                    />
+                    <label htmlFor='password'>Password:</label>
+                    <SprkRevealInput
+                        label=""
+                        toggleLabel="Show Password"
+                        name="password-1"
+                        onChange={event => setPassword(event.target.value)}
+                    />
+                    <SprkButton idString="button-1" analyticsString="button-1-analytics">
+                        Login
+                </SprkButton>
+                </form>
+            </div>
+
 
         </div >
     );

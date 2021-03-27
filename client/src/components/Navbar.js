@@ -6,9 +6,7 @@ const Navbar = () => {
     const { isLoggedIn, logout, getProfile } = useAuth();
     return (
         <div>
-            <h3>Navbar</h3>
             <ul>
-
                 {isLoggedIn() ?
                     <>
                         <li><Link to='/create-review'>Submit Question</Link></li>
