@@ -13,7 +13,7 @@ function Review() {
     console.log(questions)
     return (
         <div>
-            
+
             <div style={{ marginLeft: '1%', marginRight: '1%' }}>
 
 
@@ -25,8 +25,6 @@ function Review() {
         sprk-o-Stack--medium"
 
                 >
-                    <h4>How to:</h4>
-                    <br />
                     <h6>Choose a <strong>difficulty</strong>, then choose a <strong>topic</strong> and/or <strong>subtopic</strong>. The corresponding review items will appear down below.</h6>
                     <br />
                     <h6>If a review item has incorrect or incomplete information, click the red <strong>"Flag"</strong> button to mark it for review.</h6>
@@ -36,16 +34,16 @@ function Review() {
             <br />
             <br />
             <br />
-            <div style={{ width: '98%', display: 'flex', alignContent: 'center', marginLeft: '1%'}}>
+            <div style={{ width: '98%', display: 'flex', alignContent: 'center', marginLeft: '1%' }}>
                 <SprkStack splitAt="tiny" >
 
-                    <SprkStackItem additionalClasses="sprk-o-Stack__item--third@xs" style={{padding: '5px'}}>
+                    <SprkStackItem additionalClasses="sprk-o-Stack__item--third@xs" style={{ padding: '5px' }}>
                         <DifficultyGrid questions={questions} setQuestions={setQuestions} />
                     </SprkStackItem>
-                    <SprkStackItem additionalClasses="sprk-o-Stack__item--third@xs" style={{padding: '5px'}}>
+                    <SprkStackItem additionalClasses="sprk-o-Stack__item--third@xs" style={{ padding: '5px' }}>
                         <TopicsGrid questions={questions} setQuestions={setQuestions} />
                     </SprkStackItem>
-                    <SprkStackItem additionalClasses="sprk-o-Stack__item--third@xs" style={{padding: '5px'}}>
+                    <SprkStackItem additionalClasses="sprk-o-Stack__item--third@xs" style={{ padding: '5px' }}>
                         <SubTopicsGrid questions={questions} setQuestions={setQuestions} />
                     </SprkStackItem>
                 </SprkStack>
