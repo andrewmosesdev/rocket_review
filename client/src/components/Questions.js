@@ -18,7 +18,7 @@ const Questions = ({ result }) => {
 
             <SprkPromo
                 title={result.question}
-                subtitle={result.topic + ", " + result.subTopic + ", " + result.difficulty}
+                subtitle={result.difficulty + ', ' + result.topic + ", " + result.subTopic}
                 additionalClasses='sprk-o-Stack--split@s'
                 hasBorder
                 idString={result._id}

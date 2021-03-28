@@ -23,11 +23,15 @@ function Review() {
                     additionalContentClasses="
         sprk-o-Stack
         sprk-o-Stack--medium"
-
+                    style={{borderStyle: 'solid', borderStyle: 'black'}}
                 >
-                    <h6>Choose a <strong>difficulty</strong>, then choose a <strong>topic</strong> and/or <strong>subtopic</strong>. The corresponding review items will appear down below.</h6>
+                    <h6>1. Choose a <strong>difficulty</strong>
+                    <br/>
+                    2. Choose a <strong>topic</strong> and/or <strong>subtopic</strong>
+                    <br/>
+                    <br/> The corresponding review items will appear down below</h6>
                     <br />
-                    <h6>If a review item has incorrect or incomplete information, click the red <strong>"Flag"</strong> button to mark it for review.</h6>
+                    <h6>If a review item has incorrect or incomplete information, click the red <strong>"Flag"</strong> button to mark it for review</h6>
                 </SprkCard>
             </div>
             <br />

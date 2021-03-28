@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-import { SprkTextInput, SprkSelectionInput, SprkAlert, SprkCard } from '@sparkdesignsystem/spark-react';
+import { SprkTextInput, SprkSelectionInput, SprkAlert, SprkCard, SprkButton } from '@sparkdesignsystem/spark-react';
 
 const SubmitForm = (props) => {
     const [question, setQuestion] = useState('');
@@ -43,7 +43,7 @@ const SubmitForm = (props) => {
 
     return (
         <div>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', justifyContent: 'left', marginLeft: '1%' }}>
 
 
                 <SprkCard
@@ -52,21 +52,25 @@ const SubmitForm = (props) => {
                     additionalContentClasses="
                     sprk-o-Stack
                     sprk-o-Stack--medium">
-                    <h4>How to:</h4>
+
+                    <h6>
+                        1. Type your <strong>question</strong>
+                        <br />
+                    2. Type the <strong>answer</strong> to that question
                     <br />
-                    <h6>Type in a <strong>question</strong> and the correct <strong>answer</strong> to that question. After that, you'll need to choose a corresponding <strong>Difficulty</strong>, <strong>Topic</strong>, and <strong>Subtopic</strong>.
-                     <br />
-                     Once you're ready to submit your review item, click the <strong>"Submit" button</strong>.</h6>
-                    <br />
+                    3. Select the corresponding <strong>Difficulty</strong>, <strong>Topic</strong>, and <strong>Subtopic</strong>
+                        <br />
+                        <br />
+                     Once you're ready to submit your review item, click the <strong>"Submit" </strong>button</h6>
+
 
                 </SprkCard>
             </div>
             <br />
-            <br />
-            <div style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
-            <SprkAlert
+            <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                <SprkAlert
                     role='alert'
-                    message="Please fill out all fields before submitting a question"
+                    message="Please fill out all fields to submit a question"
                     variant="fail"
                     isVisible={open}
                     idString="alert-fail"
@@ -74,27 +78,29 @@ const SubmitForm = (props) => {
                     iconNameFail='exclamation-filled'
                 />
             </div>
-            <div style={{ display: 'flex', justifyContent: 'flex-start', marginLeft: '10%' }}>
-                
-                <form onSubmit={handleSubmit} style={{}}>
-                    <label htmlFor="question">Question</label>
+            <div style={{ display: 'flex', marginLeft: '1%' }}>
+
+                <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+                    
                     <SprkTextInput
                         label=""
                         name="question"
                         type="textarea"
+                        placeholder='Type your question here'
                         value={question}
                         formatter={value => value == !null}
                         onChange={event => setQuestion(event.target.value)} />
 
-                    <label htmlFor="answer">Answer</label>
+                    
                     <SprkTextInput
                         label=""
                         name="answer"
                         type="textarea"
                         value={answer}
+                        placeholder='Type your answer here'
                         onChange={event => setAnswer(event.target.value)} />
 
-                    <label htmlFor='difficulty'>Difficulty</label>
+                    {/* <label htmlFor='difficulty'>Difficulty</label> */}
                     <SprkSelectionInput
                         choices={[
                             {
@@ -125,7 +131,7 @@ const SubmitForm = (props) => {
                         onChange={event => setDifficulty(event.target.value)}
                     />
 
-                    <label htmlFor='topic'>Topic</label>
+                    {/* <label htmlFor='topic'>Topic</label> */}
 
                     <SprkSelectionInput
                         choices={[
@@ -162,7 +168,7 @@ const SubmitForm = (props) => {
                     />
 
 
-                    <label htmlFor='sub-topic'>Subtopic</label>
+                    {/* <label htmlFor='sub-topic'>Subtopic</label> */}
                     <SprkSelectionInput
                         choices={[
                             {
@@ -284,11 +290,14 @@ const SubmitForm = (props) => {
                         value={subTopic}
                         onChange={event => setSubTopic(event.target.value)}
                     />
-
-
-                    <button type='submit'>Submit Question</button>
-                    <br />
-
+                    <SprkButton 
+                    idString="button-1" 
+                    analyticsString="button-1-analytics"
+                    type='submit'
+                    >
+                        
+                        Submit
+                    </SprkButton>
                 </form>
             </div>
 
