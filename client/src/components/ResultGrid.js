@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import React from 'react';
 import Questions from './Questions';
-import {SprkStack, SprkStackItem} from '@sparkdesignsystem/spark-react';
 
 const _ = require('lodash');
 

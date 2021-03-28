@@ -18,6 +18,7 @@ const SubmitForm = (props) => {
     const handleSubmit = event => {
         event.preventDefault();
         SubmitQuestion();
+        
     };
 
     const SubmitQuestion = async () => {
@@ -37,7 +38,8 @@ const SubmitForm = (props) => {
             setDifficulty('');
             setTopic('');
             setSubTopic('');
-            handleClose()
+            handleClose();
+            location.reload()
         }
     };
 
@@ -130,9 +132,7 @@ const SubmitForm = (props) => {
                         value={difficulty}
                         onChange={event => setDifficulty(event.target.value)}
                     />
-
                     {/* <label htmlFor='topic'>Topic</label> */}
-
                     <SprkSelectionInput
                         choices={[
                             {

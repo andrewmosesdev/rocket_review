@@ -26,7 +26,9 @@ const Questions = ({ result }) => {
                 {result.answer}
                 <br />
                 <br />
-                {result.isFlagged ? <h7> <strong> Warning: This has been flagged as incorrect or incomplete!  </strong></h7> : <SprkButton
+                {result.isFlagged ? <h7> <strong> Warning: This has been flagged as incorrect or incomplete!  </strong></h7> 
+                : 
+                <SprkButton
                     idString="button-1"
                     analyticsString="button-1-analytics"
                     id={result._id}
