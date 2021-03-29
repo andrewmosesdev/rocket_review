@@ -32,12 +32,12 @@ const Login = () => {
 
     return (
 
-        <div style={{ marginTop: '10%' }}>
+        <div style={{ marginTop: '10%', borderStyle: 'solid', paddingBottom: '50px', marginRight: '200px', marginLeft: '200px', borderRadius: '5px', marginTop: '30px'}}>
             <SprkHighlightBoard
     
                 variant="noImage"
 
-                heading="Hello, Welcome To Rocket Review"
+                heading="Welcome To Rocket Review"
 
                 idString="highlightboard-2"
 
