@@ -45,7 +45,7 @@ const SubTopicChart = (props) => {
         else if(subTopicData[i].subTopic == "Who's Who?"){
             talliedSubTopic.whosWho ++;
         } 
-        else if(subTopicData[i].subTopic == 'mloTimeline'){
+        else if(subTopicData[i].subTopic == 'MLO Timeline'){
             talliedSubTopic.mloTimeline ++;
         }
         else if(subTopicData[i].subTopic == 'Agencies'){
