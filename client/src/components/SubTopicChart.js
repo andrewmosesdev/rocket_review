@@ -117,15 +117,13 @@ const SubTopicChart = (props) => {
         else if(subTopicData[i].subTopic == 'Vocab'){
             talliedSubTopic.vocab ++;
         }
-        else {
+        else if(subTopicData[i].subTopic == 'Temporary Authority'){
             talliedSubTopic.temporaryAuthority ++;
         }
     }
     console.log(talliedSubTopic)
 
     let talliedSubTopicArray = Object.values(talliedSubTopic);
-
-    // console.log(talliedSubTopicArray)
 
     useEffect(() => {
         fetchReviewItems();
@@ -134,11 +132,10 @@ const SubTopicChart = (props) => {
     async function fetchReviewItems() {
         const { data } = await axios.get('/api/revObjs');
         setSubTopicData(data);
-        // console.log(subTopicData)
     };
 
     let chartData = {
-        labels: ['History', "Who's Who?", 'MLO Timeline', 'Agencies', 'Your License', 'RESPA', 'Products', 'Mortgage Math 1', 'Programs', 'ECOA', 'Consumer Contact Laws', 'Borrower Ethics and Fraud', 'Industry Fraud', 'Insurances', 'Third Party Services', 'Mortgage Math 2', 'TILA', 'Fairness Laws', 'Financial Crimes Laws', 'Disclosures and Documents', 'Closing', 'Remittance and Ownership', 'Repayment', 'TRID', 'Vocab', 'Temporary Authority'],
+        labels: ['History', "Who's Who?", 'MLO Timeline', 'Agencies', 'Your License', 'RESPA', 'Products', 'Mortgage Math 1', 'Programs', 'ECOA', 'Consumer Contact Laws', 'Borrower Ethics and Fraud', 'Industry Fraud', 'Insurances', 'Third Party Services', 'Mortgage Math 2', 'TILA', 'Fairness Laws', 'Financial Crimes Laws', 'Disclosures and Documents', 'Closing', 'Remittance and Ownership', 'Repayment', 'TRID', 'Vocab', '', 'Temporary Authority'],
         datasets: [{
             data: talliedSubTopicArray,
             backgroundColor: ['#D6D2D2', '#F1E4F3', '#F4BBD3', '#1A1423', '#3D314A', '#684756', '#96705B', '#001514', '#6B0504', '#A3320B', '#E6AF2E', '#C4B2BC', '#A29587', '#846C5B', '#332E3C', '#94B9AF', '#942911', '#FE4E00', '#89043D', '#2FE6DE', '#1C3041', '#78C0E0', '#150578', '#3943B7', '#88527F', '#614344']

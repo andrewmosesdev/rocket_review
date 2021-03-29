@@ -25,9 +25,9 @@ const CreateReviewObjects = function () {
 
     return (
         <div style={{}}>
-            <SprkStack 
-            splitAt="tiny"
-            
+            <SprkStack
+                splitAt="tiny"
+
             >
                 <SprkStackItem additionalClasses="sprk-o-Stack__item--half@xs">
                     <div style={{ width: '100%' }}>
@@ -37,24 +37,27 @@ const CreateReviewObjects = function () {
                 <SprkStackItem additionalClasses="sprk-o-Stack__item--half@xs">
 
                     <div>
+                        <div style={{display: 'flex', justifyContent: 'center', marginBottom: '40px'}}>
+                            <h5 style={{textDecoration: 'underline'}}>Current study set makeup:</h5>
+                        </div>
                         <SprkStack
-                        itemSpacing='large'
-                        additionalClasses='sprk-o-Stack--center-row'
+                            itemSpacing='large'
+                            additionalClasses='sprk-o-Stack--center-row'
                         >
                             <SprkStackItem>
                                 <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-                                    
+
                                     <DifficultyChart />
-                                    
+
                                     <TopicChart />
                                 </div>
 
 
                             </SprkStackItem>
-                            <br/>
-                            <br/>
+                            <br />
+                            <br />
                             <SprkStackItem>
-                                
+
                                 <SubTopicChart />
 
                             </SprkStackItem>
