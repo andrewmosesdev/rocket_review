@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import API from '../utils/API';
 import SubmitForm from '../components/SubmitForm';
 import DifficultyChart from '../components/DifficultyChart';
+import TopicChart from '../components/TopicChart'
 
 const CreateReviewObjects = function () {
     const [revObjs, setRevObjs] = useState([]);
@@ -27,6 +28,9 @@ const CreateReviewObjects = function () {
             </div>
             <div style={{}}>
                 <DifficultyChart />
+            </div>
+            <div style={{}}>
+                <TopicChart />
             </div>
         </div>
     );

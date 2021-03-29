@@ -29,11 +29,11 @@ const DifficultyChart = (props) => {
             talliedDifficulty.weekFour ++;
         }
     }
-    console.log(talliedDifficulty)
+    // console.log(talliedDifficulty)
 
     let talliedDiffArray = Object.values(talliedDifficulty);
 
-    console.log(talliedDiffArray)
+    // console.log(talliedDiffArray)
 
     useEffect(() => {
         fetchReviewItems();
