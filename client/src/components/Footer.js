@@ -3,7 +3,7 @@ import { SprkFooter } from '@sparkdesignsystem/spark-react';
 
 const Footer = () => {
     return (
-        <div style={{ marginTop: '50px' }}>
+        <div>
             <SprkFooter />
         </div>
     )

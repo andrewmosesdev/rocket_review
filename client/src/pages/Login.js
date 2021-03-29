@@ -32,7 +32,7 @@ const Login = () => {
 
     return (
 
-        <div style={{ marginTop: '10%', borderStyle: 'solid', paddingBottom: '50px', marginRight: '200px', marginLeft: '200px', borderRadius: '5px', marginTop: '30px'}}>
+        <div style={{ marginTop: '10%', borderStyle: 'solid', paddingBottom: '50px', marginRight: '200px', marginLeft: '200px', borderRadius: '5px', marginTop: '80px', marginBottom: '100px'}}>
             <SprkHighlightBoard
     
                 variant="noImage"
