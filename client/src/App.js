@@ -8,6 +8,7 @@ import useAuth from './hooks/auth';
 import Login from './pages/Login';
 import CreateReviewObjects from './pages/CreateReviewObjects';
 import Review from './pages/Review';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
                     <Review />
                 </PrivateRoute>
             </Switch>
+            <Footer />
         </Router>
     );
 }
