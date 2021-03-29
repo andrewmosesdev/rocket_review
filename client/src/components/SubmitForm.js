@@ -294,6 +294,7 @@ const SubmitForm = (props) => {
                     idString="button-1" 
                     analyticsString="button-1-analytics"
                     type='submit'
+                    style={{marginBottom: '50px'}}
                     >
                         
                         Submit
