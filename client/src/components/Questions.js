@@ -17,8 +17,8 @@ const Questions = ({ result }) => {
         <div key={result._id} style={{ borderStyle: 'solid', borderRadius: '5px' }}>
 
             <SprkPromo
-                title={result.question}
-                subtitle={<div>  {result.difficulty}, {result.topic}, {result.subTopic} </div>}
+                title={ <div>  {result.difficulty}, {result.topic}, {result.subTopic} </div> }
+                subtitle={<div style={{fontWeight: 'bold'}}> <h6> {result.question} </h6> </div>}
                 additionalClasses='sprk-o-Stack--split@s'
                 hasBorder
                 idString={result._id}
