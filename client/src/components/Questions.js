@@ -18,7 +18,7 @@ const Questions = ({ result }) => {
 
             <SprkPromo
                 title={result.question}
-                subtitle={result.difficulty + ', ' + result.topic + ", " + result.subTopic}
+                subtitle={ <div>  {result.difficulty}, {result.topic}, {result.subTopic} </div>}
                 additionalClasses='sprk-o-Stack--split@s'
                 hasBorder
                 idString={result._id}
@@ -26,7 +26,7 @@ const Questions = ({ result }) => {
                 {result.answer}
                 <br />
                 <br />
-                {result.isFlagged ? <h7> <strong> Warning: This has been flagged as incorrect or incomplete!  </strong></h7> 
+                {result.isFlagged ? <h7> <div style={{borderStyle: 'solid', paddingTop: '3px', paddingBottom: '3px', paddingRight: '5px', paddingLeft: '5px', display: 'inline-block', backgroundColor: '#C70039', color: 'white', borderRadius: '5px'}}> <strong> Warning: This has been flagged as incorrect or incomplete! </strong> </div></h7> 
                 : 
                 <SprkButton
                     idString="button-1"
