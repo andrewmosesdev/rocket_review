@@ -42,7 +42,7 @@ const SubTopicChart = (props) => {
         if(subTopicData[i].subTopic == 'History'){
             talliedSubTopic.history ++;
         } 
-        else if(subTopicData[i].subTopic == "Who's Who?"){
+        else if(subTopicData[i].subTopic == "Whos Who"){
             talliedSubTopic.whosWho ++;
         } 
         else if(subTopicData[i].subTopic == 'MLO Timeline'){
@@ -135,10 +135,10 @@ const SubTopicChart = (props) => {
     };
 
     let chartData = {
-        labels: ['History', "Who's Who?", 'MLO Timeline', 'Agencies', 'Your License', 'RESPA', 'Products', 'Mortgage Math 1', 'Programs', 'ECOA', 'Consumer Contact Laws', 'Borrower Ethics and Fraud', 'Industry Fraud', 'Insurances', 'Third Party Services', 'Mortgage Math 2', 'TILA', 'Fairness Laws', 'Financial Crimes Laws', 'Disclosures and Documents', 'Closing', 'Remittance and Ownership', 'Repayment', 'TRID', 'Vocab', '', 'Temporary Authority'],
+        labels: ['History', 'Whos Who', 'MLO Timeline', 'Agencies', 'Your License', 'RESPA', 'Products', 'Mortgage Math 1', 'Programs', 'ECOA', 'Consumer Contact Laws', 'Borrower Ethics and Fraud', 'Industry Fraud', 'Industry Ethics', 'Insurances', 'Third Party Services', 'Mortgage Math 2', 'TILA', 'Fairness Laws', 'Financial Crimes Laws', 'Disclosures and Documents', 'Closing', 'Remittance and Ownership', 'Repayment', 'TRID', 'Vocab', 'Temporary Authority'],
         datasets: [{
             data: talliedSubTopicArray,
-            backgroundColor: ['#D6D2D2', '#F1E4F3', '#F4BBD3', '#1A1423', '#3D314A', '#684756', '#96705B', '#001514', '#6B0504', '#A3320B', '#E6AF2E', '#C4B2BC', '#A29587', '#846C5B', '#332E3C', '#94B9AF', '#942911', '#FE4E00', '#89043D', '#2FE6DE', '#1C3041', '#78C0E0', '#150578', '#3943B7', '#88527F', '#614344']
+            backgroundColor: ['orange', '#F1E4F3', '#F4BBD3', '#1A1423', '#3D314A', '#684756', '#96705B', '#001514', '#6B0504', '#A3320B', '#E6AF2E', '#C4B2BC', '#A29587', '#846C5B', '#332E3C', '#94B9AF', '#942911', '#FE4E00', '#89043D', '#2FE6DE', '#1C3041', '#78C0E0', '#150578', '#3943B7', '#88527F', '#614344', 'green']
         }]
     }
 
