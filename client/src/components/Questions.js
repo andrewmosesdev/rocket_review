@@ -14,7 +14,7 @@ const Questions = ({ result }) => {
 
     return (
 
-        <div key={result._id} style={{borderStyle: 'solid'}}>
+        <div key={result._id} style={{borderStyle: 'solid', borderRadius: '5px'}}>
 
             <SprkPromo
                 title={result.question}
