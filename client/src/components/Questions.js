@@ -38,6 +38,7 @@ const Questions = ({ result }) => {
                 </SprkButton>}
 
             </SprkPromo>
+            <></>
         </div>
     )
 }
