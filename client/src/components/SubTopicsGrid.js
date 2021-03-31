@@ -56,7 +56,7 @@ const SubTopicsGrid = (props) => {
     }
 
     useEffect(() => {
-        console.log('checkedSubTopics: ', checkedSubTopic);
+        // console.log('checkedSubTopics: ', checkedSubTopic);
     }, [checkedSubTopic]);
 
     const subTopicsCheckboxes = subTopicResultsFiltered;

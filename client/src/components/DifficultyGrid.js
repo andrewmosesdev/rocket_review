@@ -26,7 +26,7 @@ const DifficultyGrid = (props) => {
     }
 
     useEffect(() => {
-        console.log('checkedDifficulty: ', checkedDifficulty);
+        // console.log('checkedDifficulty: ', checkedDifficulty);
     }, [checkedDifficulty]);
 
     const difficultyCheckboxes = [

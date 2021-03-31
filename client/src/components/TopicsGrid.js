@@ -55,7 +55,7 @@ const TopicsGrid = (props) => {
     }
 
     useEffect(() => {
-        console.log('checkedTopics: ', checkedTopics);
+        // console.log('checkedTopics: ', checkedTopics);
     }, [checkedTopics]);
 
     const topicsCheckboxes = resultsFiltered;

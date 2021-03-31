@@ -6,7 +6,6 @@ import axios from 'axios';
 const DifficultyChart = (props) => {
     const [diffData, setDiffData] = useState([]);
     const [refresh, toggleRefresh] = useState(0);
-    // console.log(diffData)
 
     let talliedDifficulty = {
         weekOne: 0,
@@ -29,11 +28,9 @@ const DifficultyChart = (props) => {
             talliedDifficulty.weekFour ++;
         }
     }
-    // console.log(talliedDifficulty)
 
     let talliedDiffArray = Object.values(talliedDifficulty);
 
-    // console.log(talliedDiffArray)
 
     useEffect(() => {
         fetchReviewItems();

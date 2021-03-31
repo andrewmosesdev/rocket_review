@@ -6,7 +6,6 @@ import axios from 'axios';
 const TopicChart = (props) => {
     const [topicData, setTopicData] = useState([]);
     const [refresh, toggleRefresh] = useState(0);
-    // console.log(topicData)
 
     let talliedTopic = {
         USC: 0,
@@ -33,11 +32,9 @@ const TopicChart = (props) => {
             talliedTopic.Ethics ++;
         }
     }
-    console.log(talliedTopic)
 
     let talliedTopicArray = Object.values(talliedTopic);
 
-    // console.log(talliedTopicArray)
 
     useEffect(() => {
         fetchReviewItems();
@@ -46,7 +43,6 @@ const TopicChart = (props) => {
     async function fetchReviewItems() {
         const { data } = await axios.get('/api/revObjs');
         setTopicData(data);
-        // console.log(topicData)
     };
 
     let chartData = {

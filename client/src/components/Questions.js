@@ -6,9 +6,7 @@ const Questions = ({ result }) => {
 
     const toggleFlagged = async (id, flaggedStatus) => {
         const flippedFlaggedStatus = !flaggedStatus;
-        // console.log(id.target.id)
         await API.changeFlagged(id.target.id, flippedFlaggedStatus);
-        console.log(result._id)
         location.reload();
     }
 

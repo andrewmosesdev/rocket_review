@@ -10,7 +10,6 @@ function Review() {
 
     const [questions, setQuestions] = useState([]);
 
-    console.log(questions)
     return (
         <div>
 
