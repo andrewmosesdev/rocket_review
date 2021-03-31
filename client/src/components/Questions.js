@@ -18,8 +18,8 @@ const Questions = ({ result }) => {
                 title={ <div>  {result.difficulty}, {result.topic}, {result.subTopic} </div> }
                 subtitle={<div style={{fontWeight: 'bold'}}> <h6> {result.question} </h6> </div>}
                 additionalClasses='sprk-o-Stack--split@s'
-                hasBorder
                 idString={result._id}
+                
             >
                 <SprkDivider idString="divider-1" element="span" />
                 <div style={{fontWeight: 'bold'}}>{result.answer}</div>
