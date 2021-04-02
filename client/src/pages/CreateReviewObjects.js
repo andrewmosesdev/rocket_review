@@ -36,7 +36,7 @@ const CreateReviewObjects = function () {
 
                     <div>
                         <div style={{display: 'flex', justifyContent: 'center', marginBottom: '40px'}}>
-                            <h5 style={{textDecoration: 'underline'}}>Current study set makeup:</h5>
+                            <h4 style={{}}>Current study set makeup:</h4>
                         </div>
                         <SprkStack
                             itemSpacing='large'
