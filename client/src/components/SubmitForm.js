@@ -85,7 +85,7 @@ const SubmitForm = (props) => {
                 <form onSubmit={handleSubmit} style={{ width: '100%' }}>
                     
                     <SprkTextInput
-                        label=""
+                        label="Question"
                         name="question"
                         type="textarea"
                         placeholder='Type your question here'
@@ -95,7 +95,7 @@ const SubmitForm = (props) => {
 
                     
                     <SprkTextInput
-                        label=""
+                        label="Answer"
                         name="answer"
                         type="textarea"
                         value={answer}
@@ -128,7 +128,7 @@ const SubmitForm = (props) => {
                         ]}
                         name="difficulty"
                         variant="select"
-                        label=""
+                        label="Difficulty"
                         value={difficulty}
                         onChange={event => setDifficulty(event.target.value)}
                     />
@@ -162,7 +162,7 @@ const SubmitForm = (props) => {
                         ]}
                         name="name"
                         variant="select"
-                        label=""
+                        label="Topic"
                         value={topic}
                         onChange={event => setTopic(event.target.value)}
                     />
@@ -286,7 +286,7 @@ const SubmitForm = (props) => {
                         ]}
                         name="sub-topic"
                         variant="select"
-                        label=""
+                        label="Subtopic"
                         value={subTopic}
                         onChange={event => setSubTopic(event.target.value)}
                     />
