@@ -33,6 +33,14 @@ const Navbar = () => {
                             variant='simple'
                             analyticsString='link-simple'
                             idString='link-2'
+                            href='https://rocket-review.herokuapp.com/admin'
+                            target='_blank'
+                        >Admin</SprkLink>
+                        <br />
+                        <SprkLink
+                            variant='simple'
+                            analyticsString='link-simple'
+                            idString='link-2'
                             onClick={() => logout()}
                             to='/'
                         >Logout</SprkLink>
