@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { SprkTextInput, SprkSelectionInput, SprkAlert, SprkCard, SprkButton } from '@sparkdesignsystem/spark-react';
 
@@ -10,15 +10,22 @@ const SubmitForm = (props) => {
     const [topic, setTopic] = useState('');
     const [subTopic, setSubTopic] = useState('');
 
-    // for alert
+    // for failure alert
     const [open, setOpen] = useState(false);
     const handleClick = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+    // for success alert
+    const [successOpen, setSuccessOpen] = useState(false);
+
+
+    // if(!successOpen) {
+    //     return null
+    // }
+
     const handleSubmit = event => {
         event.preventDefault();
         SubmitQuestion();
-        
     };
 
     const SubmitQuestion = async () => {
@@ -39,7 +46,13 @@ const SubmitForm = (props) => {
             setTopic('');
             setSubTopic('');
             handleClose();
-            location.reload()
+
+            setSuccessOpen(true)
+
+            setTimeout(() => {
+                setSuccessOpen(false)
+                location.reload()
+            }, 1800)
         }
     };
 
@@ -79,11 +92,20 @@ const SubmitForm = (props) => {
                     analyticsString="alert-fail-analytics"
                     iconNameFail='exclamation-filled'
                 />
+                <SprkAlert
+                    role='alert'
+                    message="Review item successfully submitted! Reloading page."
+                    variant="success"
+                    isVisible={successOpen}
+                    idString="alert-success"
+                    analyticsString="alert-success-analytics"
+                    iconNameFail='exclamation-filled'
+                />
             </div>
             <div style={{ display: 'flex', marginLeft: '1%' }}>
 
                 <form onSubmit={handleSubmit} style={{ width: '100%' }}>
-                    
+
                     <SprkTextInput
                         label="Question"
                         name="question"
@@ -93,7 +115,7 @@ const SubmitForm = (props) => {
                         formatter={value => value == !null}
                         onChange={event => setQuestion(event.target.value)} />
 
-                    
+
                     <SprkTextInput
                         label="Answer"
                         name="answer"
@@ -290,13 +312,13 @@ const SubmitForm = (props) => {
                         value={subTopic}
                         onChange={event => setSubTopic(event.target.value)}
                     />
-                    <SprkButton 
-                    idString="button-1" 
-                    analyticsString="button-1-analytics"
-                    type='submit'
-                    style={{marginBottom: '50px'}}
+                    <SprkButton
+                        idString="button-1"
+                        analyticsString="button-1-analytics"
+                        type='submit'
+                        style={{ marginBottom: '50px' }}
                     >
-                        
+
                         Submit
                     </SprkButton>
                 </form>
